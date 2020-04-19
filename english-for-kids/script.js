@@ -29,6 +29,7 @@ const cardUp = Array.from(document.querySelectorAll('.card-up'));
 function mainPageRender() {
 	cards.reverse().forEach((element) => {
 		let createCardElement = ` 
+		 
 		 <div class="card ${element.class}">
 		 <div class="card-up"></div>
 		 <div class="image">
@@ -39,6 +40,8 @@ function mainPageRender() {
 		 </div> 
 		 </div>`;
 		mainPage.insertAdjacentHTML('afterbegin', createCardElement);
+		// <div class = "container_card"></div>
+		// </div>
 	});
 }
 
@@ -62,43 +65,66 @@ function renderCategory() {
 
 function render(cards, categoryPage) {
 	// let fragment = document.createDocumentFragment();
-	cards.card.forEach((element, index) => {
+	cards.card.forEach((element) => {
 		let createCardElement = ` 
 		<div class="flip">
 		 <div class="card_category ${cards.class}">
+		 <audio class = "audio" src="${element.audioSrc}"></audio>
 		 <div class="image_rectangular">
-		 <div  class="card_face" style="background:url(${element.image})center; background-size: cover "}"></div>
+		 <div  class="card_face" style="background:url(${element.image})center; background-size: cover "></div>
+		 <div  class="card_face_back" style="background:url(${element.image})center; background-size: cover "></div>
 		 </div>
-		 <div class="card_body_category_translate">
-		 <h4 class="card_title_category">${element.translation}</h4>
-    	 </div>
 		 <div class="card_body_category">
-		 <h4 class="card_title_category">${element.word}</h4>
+		 <h4 class="card_title_category_translate">${element.translation}</h4>
+    	 <h4 class="card_title_category">${element.word}</h4>
 		 </div> 
 		 <div class="translate">
 		 <div class="translate_word" style="background:url(img/repeat.png) center; background-size: cover;"></div> 
 		 </div>
-		 </div>
-		 </div>`;
+         </div>        
+         </div>`;
+		//   let audioElement = new Audio(${element.audioSrc});
 		//  fragment.append(createCardElement);
+		// <audio class = "audio"></audio>
 		categoryPage.insertAdjacentHTML('afterbegin', createCardElement);
 	});
 	// categoryPage.prepend(fragment);
-
 }
+
+burgerMenu.addEventListener('click', (event) => {
+	burgerActiveToggle();
+});
+
+switchMenu.addEventListener('click', () => {
+	toggleSwitch.classList.toggle('active');
+	spanSwitch.classList.toggle('active');
+	navigation.classList.toggle('play');
+	switchMenu.classList.toggle('play');
+
+	cardUp.forEach((el) => {
+		el.classList.toggle('play');
+	});
+});
 
 body.addEventListener('click', (event) => {
 	if (event.target.closest('.translate')) {
 		cardFlip();
 	}
 
+	if (event.target.closest('.card_face') || 
+	(event.target.closest('.card_body_category') && !event.target.closest('.card_body_category.back'))){
+		let audioElement = new Audio(event.target.closest('.card_category').firstElementChild.src);
+		audioElement.play();
+	}
+
+	// рендер по нажатию меню главная страница
 	if (event.target.closest('.navigation')) {
 		if (event.target.childNodes[0].data === 'Main page') {
 			checkForNull();
 			containerRender();
 			burgerActiveToggle();
 		}
-
+		// рендер по нажатию меню категории
 		cards.forEach((element) => {
 			if (element.category === event.target.childNodes[0].data) {
 				checkForNull();
@@ -121,31 +147,18 @@ body.addEventListener('click', (event) => {
 function cardFlip() {
 	let card = event.target.closest('.card_category');
 	card.classList.add('back');
-	card.querySelector('.card_face').classList.add('back');
+	card.querySelector('.card_body_category').classList.add('back');
+	// card.querySelector('.card_face').classList.add('back');
 
 	card.addEventListener('mouseleave', (event) => {
 		if (event.target.closest('.flip')) {
 			let card = event.target.closest('.card_category');
 			card.classList.remove('back');
-			card.querySelector('.card_face').classList.remove('back');
+			card.querySelector('.card_body_category').classList.remove('back');
+			// card.querySelector('.card_face').classList.remove('back');
 		}
 	});
 }
-
-burgerMenu.addEventListener('click', (event) => {
-	burgerActiveToggle();
-});
-
-switchMenu.addEventListener('click', () => {
-	toggleSwitch.classList.toggle('active');
-	spanSwitch.classList.toggle('active');
-	navigation.classList.toggle('play');
-	switchMenu.classList.toggle('play');
-
-	cardUp.forEach((el) => {
-		el.classList.toggle('play');
-	});
-});
 
 function burgerActiveToggle() {
 	burger.classList.toggle('burger_active');
