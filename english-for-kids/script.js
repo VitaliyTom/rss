@@ -6,7 +6,6 @@ const navigation = document.querySelector('.navigation');
 const switchMenu = document.querySelector('.switch');
 const toggleSwitch = document.querySelector('.toggle_switch');
 const spanSwitch = document.querySelector('.span_switch');
-const mainContainer = document.querySelector('.main_container');
 const body = document.querySelector('body');
 const main = document.querySelector('main');
 const main_container = document.createElement('div');
@@ -24,12 +23,10 @@ function containerRender() {
 mainPageRender();
 
 const cardUp = Array.from(document.querySelectorAll('.card-up'));
-// const categoryPage = document.querySelector('.category_page');
 
 function mainPageRender() {
 	cards.reverse().forEach((element) => {
-		let createCardElement = ` 
-		 
+		let createCardElement = ` 		 
 		 <div class="card ${element.class}">
 		 <div class="card-up"></div>
 		 <div class="image">
@@ -40,8 +37,6 @@ function mainPageRender() {
 		 </div> 
 		 </div>`;
 		mainPage.insertAdjacentHTML('afterbegin', createCardElement);
-		// <div class = "container_card"></div>
-		// </div>
 	});
 }
 
@@ -58,13 +53,70 @@ function renderCategory() {
 			if (arrCardClass.includes(element.class)) {
 				mainPage.remove(mainPage);
 				render(element, categoryPageCreate());
+				checkPlay();
 			}
 		});
 	}
 }
 
+burgerMenu.addEventListener('click', (event) => {
+	burgerActiveToggle();
+});
+
+switchMenu.addEventListener('click', () => {
+	toggleSwitch.classList.toggle('active');
+	spanSwitch.classList.toggle('active');
+	navigation.classList.toggle('play');
+	switchMenu.classList.toggle('play');
+
+	const cardCategoryArray = Array.from(document.querySelectorAll('.card_category'));
+
+	cardUp.forEach((el) => {
+		el.classList.toggle('play');
+	});
+
+	play(cardCategoryArray);
+	if (document.querySelector('.category_page')) {
+		button();
+	}
+});
+
+body.addEventListener('click', (event) => {
+	if (event.target.closest('.translate')) {
+		cardFlip();
+	}
+
+	if (
+		event.target.closest('.card_face') ||
+		(event.target.closest('.card_body_category') && !event.target.closest('.card_body_category.back'))
+	) {
+		if (!document.querySelector('.switch.play')) {
+			let audioElement = new Audio(event.target.closest('.card_category').firstElementChild.src);
+			audioElement.play();
+		}
+	}
+
+	if (event.target.closest('.navigation')) {
+		if (event.target.childNodes[0].data === 'Main page') {
+			checkForNull();
+			containerRender();
+			burgerActiveToggle();
+			document.querySelector('.button').classList.remove('play');
+		}
+
+		cards.forEach((element) => {
+			if (element.category === event.target.childNodes[0].data) {
+				checkForNull();
+				render(element, categoryPageCreate());
+				burgerActiveToggle();
+				checkPlay();
+				document.querySelector('.button').classList.add('play');
+			}
+		});
+	}
+});
+
 function render(cards, categoryPage) {
-	// let fragment = document.createDocumentFragment();
 	cards.card.forEach((element) => {
 		let createCardElement = ` 
 		<div class="flip">
@@ -83,80 +135,40 @@ function render(cards, categoryPage) {
 		 </div>
          </div>        
          </div>`;
-		//   let audioElement = new Audio(${element.audioSrc});
-		//  fragment.append(createCardElement);
-		// <audio class = "audio"></audio>
 		categoryPage.insertAdjacentHTML('afterbegin', createCardElement);
 	});
-	// categoryPage.prepend(fragment);
+	let button = `<button class="button">Start game</button>`;
+	if (!document.querySelector('.button')) {
+		document.querySelector('.category_page').insertAdjacentHTML('afterend', button);
+	}
 }
-
-burgerMenu.addEventListener('click', (event) => {
-	burgerActiveToggle();
-});
-
-switchMenu.addEventListener('click', () => {
-	toggleSwitch.classList.toggle('active');
-	spanSwitch.classList.toggle('active');
-	navigation.classList.toggle('play');
-	switchMenu.classList.toggle('play');
-
-	cardUp.forEach((el) => {
-		el.classList.toggle('play');
-	});
-});
-
-body.addEventListener('click', (event) => {
-	if (event.target.closest('.translate')) {
-		cardFlip();
-	}
-
-	if (event.target.closest('.card_face') || 
-	(event.target.closest('.card_body_category') && !event.target.closest('.card_body_category.back'))){
-		let audioElement = new Audio(event.target.closest('.card_category').firstElementChild.src);
-		audioElement.play();
-	}
-
-	// рендер по нажатию меню главная страница
-	if (event.target.closest('.navigation')) {
-		if (event.target.childNodes[0].data === 'Main page') {
-			checkForNull();
-			containerRender();
-			burgerActiveToggle();
-		}
-		// рендер по нажатию меню категории
-		cards.forEach((element) => {
-			if (element.category === event.target.childNodes[0].data) {
-				checkForNull();
-
-				render(element, categoryPageCreate());
-				burgerActiveToggle();
-			}
-		});
-	}
-	// FIX ME
-	// ArrayFrom(navigation.classList).includes('active');
-	// let arrNavigation = Array.from(document.querySelector('.navigation').classList);
-
-	// if (arrNavigation.includes('active')) {
-	// 	burger.classList.remove('burger_active');
-	// 	navigation.classList.remove('active');
-	// }
-});
 
 function cardFlip() {
 	let card = event.target.closest('.card_category');
 	card.classList.add('back');
 	card.querySelector('.card_body_category').classList.add('back');
-	// card.querySelector('.card_face').classList.add('back');
-
 	card.addEventListener('mouseleave', (event) => {
 		if (event.target.closest('.flip')) {
 			let card = event.target.closest('.card_category');
 			card.classList.remove('back');
 			card.querySelector('.card_body_category').classList.remove('back');
-			// card.querySelector('.card_face').classList.remove('back');
 		}
+	});
+}
+
+function button() {
+	document.querySelector('.button').classList.toggle('play');
+}
+
+function play(cardCategoryArray) {
+	cardCategoryArray.forEach((el) => {
+		Array.from(el.children).forEach((item) => {
+			if (Array.from(item.classList).includes('image_rectangular')) {
+				item.children[0].classList.toggle('play');
+			} else {
+				item.classList.toggle('play');
+			}
+		});
 	});
 }
 
@@ -183,25 +195,11 @@ function checkForNull() {
 		cp.remove();
 	}
 }
-// let categories = [
-// 	'Action part 1',
-// 	'Action part 2',
-// 	'Action part 3',
-// 	'Adjective',
-// 	'Animal part 1',
-// 	'Animal part 2',
-// 	'Clothes',
-// 	'Emotions'
-// ];
 
-// categories = categories.reverse();
-// const cardUp = Array.from(document.querySelectorAll('.card-up'));
-// const categoryPage = document.querySelector('.category_page');
-// const flip = document.querySelector('.flip');
-// mainPage.remove(cards);
-// categoryPage.remove(flip);
-// mainPage.className = 'main_page';
-// mainContainer.prepend(mainPage);
-// if (document.querySelector('.category_page')) {
-// 	categoryPage.remove(categoryPage);
-// }
+function checkPlay() {
+	if (document.querySelector('.switch.play')) {
+		const cardCategoryArray = Array.from(document.querySelectorAll('.card_category'));
+		play(cardCategoryArray);
+		document.querySelector('.button').classList.toggle('play');
+	}
+}
