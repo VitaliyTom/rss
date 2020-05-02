@@ -13,7 +13,167 @@ html {
 
 body {
 	width: 100%;
-	max-width: 1500px;
+	max-width: 1200px;
 	margin: 0 auto;
 	font-size: 1.2rem;
+}
+
+/*___________________  header  ___________________*/
+
+.wrapper_header {
+	padding: 1px;
+	color: blanchedalmond;
+	background-color: rgb(48, 46, 46);
+	text-align: center;
+	border-bottom-left-radius: 18px;
+	border-bottom-right-radius: 18px;
+	box-shadow: 0 0 10px 1px black;
+}
+
+h1 {
+	margin: 2%;
+}
+
+/*___________________  main  ___________________*/
+
+main {
+	width: 100%;
+	margin: 60px 0;
+}
+
+.input {
+	display: flex;
+	justify-content: center;
+}
+
+.input_text {
+	position: relative;
+	flex-grow: 0.4;
+}
+
+.input_text::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 2%;
+	transform: translate(-2%, -50%);
+	width: 45px;
+	height: 45px;
+	background: url(img/keyboard-icon2.png) no-repeat;
+	background-size: cover;
+}
+
+.input_text::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	bottom: 0;
+	left: 2%;
+	width: 25px;
+	height: 25px;
+	background: url(img/loupe2.png) no-repeat;
+	background-size: cover;
+	transform: translate(-2%, -50%);
+}
+
+.input {
+	width: 100%;
+	height: 35px;
+}
+
+.field_input {
+	width: 100%;
+	height: 100%;
+	border: 2px solid #c3c3c3;
+	border-radius: 30px;
+	padding-left: 50px;
+	font-size: 2.5rem;
+}
+
+.field_input:focus {
+	outline: none;
+	border: 1px solid rgb(91, 190, 116);
+	box-shadow: 0 0 10px 1px rgb(91, 190, 116);
+}
+
+.btn {
+	/* padding: 0 1px; */
+	margin-left: 5px;
+	width: 120px;
+	height: 35px;
+}
+
+.btn_input {
+	width: 120px;
+	height: 35px;
+	border-radius: 30px;
+	border: 2px solid rgb(184, 67, 67);
+	color: rgb(233, 227, 218);
+	background-color: rgb(184, 67, 67);
+	cursor: pointer;
+}
+
+.btn_input:focus {
+	outline: none;
+}
+
+.btn_input:hover {
+	border: 2px solid rgb(184, 67, 67);
+	background-color: rgb(184, 67, 67);
+	animation: btn_input 3s ease infinite;
+}
+
+@keyframes btn_input {
+	0% {
+		border: 2px solid rgb(184, 67, 67);
+		background-color: rgb(184, 67, 67);
+	}
+	50% {
+		border: 2px solid rgb(91, 190, 116);
+		background-color: rgb(91, 190, 116);
+	}
+	100% {
+		border: 2px solid rgb(184, 67, 67);
+		background-color: rgb(184, 67, 67);
+	}
+}
+
+/*___________________  footer  ___________________*/
+
+.wrapper_footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 50px;
+	font-size: 1.5rem;
+	border-top-left-radius: 18px;
+	border-top-right-radius: 18px;
+	background-color: rgb(48, 46, 46);
+	box-shadow: 0 0 10px 1px black;
+	color: white;
+}
+
+.contact {
+	display: flex;
+	align-items: center;
+	margin: 20px;
+}
+
+.icon_contact {
+	width: 40px;
+	height: 40px;
+	margin-right: 15px;
+	border-radius: 50%;
+	background-color: rgb(255, 255, 255);
+}
+
+.icon_contact img {
+    width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.link_contact a {
+	text-decoration: none;
+	color: rgb(110, 231, 110);
 }
