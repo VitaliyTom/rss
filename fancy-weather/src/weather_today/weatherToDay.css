@@ -1,0 +1,36 @@
+.weather_today {
+	margin: 70px 80px 0;
+}
+
+.region p {
+	font-size: 3rem;
+	color: blanchedalmond;
+}
+
+.container_weather {
+	display: flex;
+	/* width: 60%; */
+}
+
+.weather_temperature p {
+	font-size: 25rem;
+	color: blanchedalmond;
+}
+
+.info {
+	margin-left: 100px;
+}
+
+.info ul {
+	margin-top: 35px;
+}
+
+.info li {
+	font-size: 3rem;
+	color: blanchedalmond;
+	list-style-type: none;
+}
+.temperature_img img {
+	width: 125px;
+	height: 125px;
+}
