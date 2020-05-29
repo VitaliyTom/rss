@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/fancy-weather/src/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="src/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>fancy-weather</title>
 </head>
@@ -19,11 +19,21 @@
                 </button>
             </div>
             <div class="wrapper_language">
-                <select class="language">
-                    <option>eng</option>
-                    <option>rus</option>
-                    <option>blr</option>
-                </select>
+                <ul class="language">
+                    <li class="a">
+                        <p class="lang">ENG</p>
+                    </li>
+                    <li class="b">
+                        <p class="lang">ENG</p>
+                    </li>
+                    <li class="c">
+                        <p class="lang">RUS</p>
+                    </li>
+                    <li class="d">
+                        <p class="lang">BLR</p>
+                    </li>
+                </ul>
+
                 <!-- <button class="language">en</button> -->
             </div>
             <div class="wrapper_change_degree">
@@ -40,11 +50,11 @@
         </div>
     </div>
     <div class="weather_today">
-       
+
     </div>
-  
+
     <script src="script.js"></script>
-    <script src="src/control_block/control.js" type = "module"></script>
+    <script src="src/control_block/control.js" type="module"></script>
     <script src="src/weather_today/weatherToDay.js" type="module"></script>
 </body>
 
