@@ -1,10 +1,11 @@
 import getWeather from '../weather_today/weatherToDay.js';
 const controlBlock = document.querySelector('.control_block');
-// const client_id = 'YcOZjTnZyaoo2rVD0K3ZYSlVYGwpyJxwhqZMzc-R5to';
-const client_id = 'e2077ad31a806c894c460aec8f81bc2af4d09c4f8104ae3177bb809faf0eac17';
+const client_id = 'YcOZjTnZyaoo2rVD0K3ZYSlVYGwpyJxwhqZMzc-R5to';
+// const client_id = 'e2077ad31a806c894c460aec8f81bc2af4d09c4f8104ae3177bb809faf0eac17';
 const spinner = document.querySelector('.spinner');
 const degreeCelsiusBtn = document.querySelector('.degree_сelsius_btn');
 const degreeFahrenheitBtn = document.querySelector('.degree_fahrenheit_btn');
+const languageLiAll = document.querySelectorAll('.language li');
 
 if (!localStorage.hasOwnProperty('degree')) {
 	localStorage.setItem('degree', 'C');
@@ -35,6 +36,12 @@ async function replaceImg() {
 	spinner.classList.remove('active');
 }
 
+function deleteActiveLi() {
+	languageLiAll.forEach((el) => {
+		el.classList.remove('active');
+	});
+}
+
 controlBlock.addEventListener('click', (event) => {
 	//		replace background
 	if (event.target.closest('.wrapper_refresh_img')) {
@@ -57,5 +64,24 @@ controlBlock.addEventListener('click', (event) => {
 		localStorage.setItem('degree', event.target.value);
 		event.target.classList.add('active');
 		getWeather();
+	}
+
+	//		button select lang
+	if (event.target.closest('.language')) {
+		languageLiAll.forEach((el) => {
+			el.classList.add('active');
+		});
+	}
+
+	if (event.target.closest('.b') || event.target.closest('.c') || event.target.closest('.d')) {
+		document.querySelector('.a').firstElementChild.innerText = event.target.innerText;
+		deleteActiveLi();
+	} else if (
+		!event.target.closest('.b') &&
+		!event.target.closest('.c') &&
+		!event.target.closest('.d') &&
+		!event.target.closest('.a')
+	) {
+		deleteActiveLi();
 	}
 });
