@@ -1,6 +1,7 @@
+import dayName from '../general/day.js';
 function addElementWeather(weatherObj) {
-    const weatherToday = document.querySelector('.weather_today');
-    const region = document.querySelector('.region');
+	const weatherToday = document.querySelector('.weather_today');
+	const region = document.querySelector('.region');
 
 	// let now = '';
 	// now += ' ' + new Date().getDay();
@@ -30,7 +31,7 @@ function addElementWeather(weatherObj) {
         </div>
         <div class="info">
             <div class="temperature_img">
-                <img src="src/weather_today/img/weather_sun.png" alt="${weatherObj.condition.text}">
+                <img src="${weatherObj.condition.icon}" alt="${weatherObj.condition.text}">
             </div>
             <ul>
                 <li>${weatherObj.condition.text}</li>
@@ -47,8 +48,37 @@ function addElementWeather(weatherObj) {
 		Array.from(weatherToday.children).forEach((element) => {
 			element.remove();
 		});
+		document.querySelector('.weather_three_day').remove();
 	}
+
+	let result2 = '';
+    let item = 1;
+    const dayNumber = new Date().getDay();
+    // const dayNumber = 3;
+	weatherObj.nextThreeDay.forEach((el) => {
+		result2 += `
+        <div class="wrapper_weather">
+            <div class="day_name">
+                <p>${getNameDay(dayNumber + item > 6 ? dayNumber - 7 + item : dayNumber + item)}</p>
+            </div>
+            <div class="degree_img">
+                <div class="degree_three_day">
+                    <p>${degreeLocal === 'C' ? Math.round(el.day.avgtemp_c) : Math.round(el.day.avgtemp_f)}°</p>
+                </div>
+                <div class="img_three_day">
+                    <img src="${el.day.condition.icon}" alt="">
+                </div>
+            </div>
+        </div>`;
+		item++;
+	});
+	result2 = `<div class="weather_three_day"> ${result2} </div>`;
 	weatherToday.insertAdjacentHTML('beforeend', result);
+	weatherToday.insertAdjacentHTML('afterend', result2);
+}
+
+function getNameDay(params) {
+	return dayName[params];
 }
 
 export default addElementWeather;
