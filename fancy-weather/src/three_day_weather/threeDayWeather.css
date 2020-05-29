@@ -1,0 +1,28 @@
+.weather_three_day {
+	display: flex;
+	margin: 25px 0 0 65px;
+}
+
+.wrapper_weather {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.degree_three_day {
+	margin-top: 15px;
+}
+
+.degree_img {
+	display: flex;
+}
+
+.day_name p {
+	font-size: 2.5rem;
+	color: blanchedalmond;
+}
+
+.degree_three_day p {
+	font-size: 10rem;
+	color: blanchedalmond;
+}
