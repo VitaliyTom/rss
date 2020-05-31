@@ -83,6 +83,7 @@ controlBlock.addEventListener('click', (event) => {
 		document.querySelector('.form_search').reset();
 		// localStorage.setItem('regionCity', city);
 		getCoordinates(city);
+		replaceImg();
 		// getWeather();
 		// console.log(searchInput.value.toString());
 	}

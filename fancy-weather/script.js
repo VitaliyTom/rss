@@ -1,3 +1,5 @@
+replaceImg();
+
 async function replaceImg() {
 	const response = await fetch(url());
 	const parsed = await response.json();
@@ -10,12 +12,11 @@ async function replaceImg() {
 	spinner.classList.remove('active');
 }
 
-async function codeCountry(){
+async function codeCountry() {
 	const response = await fetch('https://ipinfo.io/json?token=a045dc5cfaf1fe');
 	const parsed = await response.json();
 	console.log(parsed);
-	localStorage.setItem('country_code', parsed.country) 
-	
+	localStorage.setItem('country_code', parsed.country);
 }
-
+replaceImg();
 codeCountry();
