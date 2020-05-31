@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css" rel="stylesheet" />
     <link rel="shortcut icon" href="src/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>fancy-weather</title>
@@ -21,16 +23,16 @@
             <div class="wrapper_language">
                 <ul class="language">
                     <li class="a">
-                        <p class="lang">ENG</p>
+                        <p class="lang">Eng</p>
                     </li>
                     <li class="b">
-                        <p class="lang">ENG</p>
+                        <p class="lang">Eng</p>
                     </li>
                     <li class="c">
-                        <p class="lang">RUS</p>
+                        <p class="lang">Rus</p>
                     </li>
                     <li class="d">
-                        <p class="lang">BLR</p>
+                        <p class="lang">Blr</p>
                     </li>
                 </ul>
 
@@ -49,13 +51,29 @@
             </form>
         </div>
     </div>
-    <div class="weather_today">
+    <div class="weather">
 
+        <div class="weather_today">
+
+            
+        </div>
+        <div class="wrapper_map">
+            <div id="map"></div>
+        </div>
+        
+        <!-- <div class="coordinates">dfgbdb</div> -->
     </div>
 
+
+
+
+
     <script src="script.js"></script>
+    <script src="src/geolocation/map.js" type="module"></script>
     <script src="src/control_block/control.js" type="module"></script>
-    <script src="src/weather_today/weatherToDay.js" type="module"></script>
+    <!-- <script src="src/geolocation/map.js" type="module"></script> -->
+    <!-- <script src="src/weather_today/weatherToDay.js" type="module"></script> -->
+    <!-- <script src="src/three_day_weather/threeDayWeather.js" type="module"></script> -->
 </body>
 
 </html>

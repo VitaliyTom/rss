@@ -1,5 +1,6 @@
 .weather_today {
-	margin: 70px 80px 0;
+	margin: 70px 0px 0;
+	/* width: 50%; */
 }
 
 .region p {
@@ -33,4 +34,97 @@
 .temperature_img img {
 	width: 125px;
 	height: 125px;
+}
+
+@media (max-width: 1200px){
+	.weather_today{
+		display: block;
+		margin: 40px auto 0;
+	}
+
+	.region p {
+		font-size: 2rem;
+		color: blanchedalmond;
+	}
+
+	.weather_temperature p {
+		font-size: 17rem;
+		color: blanchedalmond;
+	}
+
+	.info {
+		margin-left: 40px;
+	}
+	
+	.info ul {
+		margin-top: 5px;
+	}
+	
+	.info li {
+		font-size: 1.7rem;
+		color: blanchedalmond;
+		list-style-type: none;
+	}
+	.temperature_img img {
+		width: 100px;
+		height: 100px;
+	}
+}
+
+@media (max-width: 600px){
+	.weather_today{
+		display: block;
+		margin: 40px auto 0;
+	}
+
+	.region p {
+		text-align: center;
+		font-size: 1.5rem;
+		color: blanchedalmond;
+	}
+
+	.weather_temperature p {
+		font-size: 10rem;
+		color: blanchedalmond;
+	}	
+	
+	.info li {
+		font-size: 1.4rem;
+		color: blanchedalmond;
+		list-style-type: none;
+	}
+	.temperature_img img {
+		margin-top: 10px;
+		width: 35px;
+		height: 35px;
+	}
+}
+
+@media (max-width: 450px){
+	.weather_today{
+		display: block;
+		margin: 0 auto 0;
+	}
+
+	.region p {
+		text-align: center;
+		font-size: 1.5rem;
+		color: blanchedalmond;
+	}
+
+	.weather_temperature p {
+		font-size: 7rem;
+		color: blanchedalmond;
+	}	
+	
+	.info li {
+		font-size: 1.2rem;
+		color: blanchedalmond;
+		list-style-type: none;
+	}
+	.temperature_img img {
+		margin-top: 10px;
+		width: 35px;
+		height: 35px;
+	}
 }

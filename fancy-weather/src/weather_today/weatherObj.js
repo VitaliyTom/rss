@@ -1,29 +1,21 @@
 function Weather(
-	country,
-	name,
-	temp_c,
-	temp_f,
-	feelslike_c,
-	feelslike_f,
+	lat,
+	lon,
+	temp,
+	feelslike,
 	humidity,
-	wind_kph,
-	wind_mph,
+	wind,	
 	localtime,
-	condition,
-	nextThreeDay
+	weather_code,	
 ) {
-	this.country = country;
-	this.name = name;
-	this.temp_c = temp_c;
-	this.temp_f = temp_f;
-	this.feelslike_c = feelslike_c;
-	this.feelslike_f = feelslike_f;
+	this.lat = lat;
+	this.lon = lon;
+	this.temp = temp;
+	this.feelslike = feelslike;
 	this.humidity = humidity;
-	this.wind_kph = wind_kph;
-	this.wind_mph = wind_mph;
+	this.wind = wind;
 	this.localtime = localtime;
-	this.condition = condition;
-	this.nextThreeDay = nextThreeDay;
+	this.weather_code = weather_code;
 }
 
 export default Weather;

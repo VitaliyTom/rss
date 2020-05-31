@@ -4,9 +4,9 @@
 }
 
 .wrapper_weather {
-    display: flex;
-    flex-direction: column;
-    margin-left: 15px;
+	display: flex;
+	flex-direction: column;
+	margin-left: 15px;
 }
 
 .degree_three_day {
@@ -25,4 +25,110 @@
 .degree_three_day p {
 	font-size: 10rem;
 	color: blanchedalmond;
+}
+
+.img_three_day {
+	width: 50px;
+	height: 50px;
+}
+
+.img_three_day img {
+	width: 50px;
+	height: 50px;
+}
+
+@media (max-width: 1200px) {
+	.weather_three_day {
+		display: flex;
+		justify-content: center;
+	}
+
+	.wrapper_weather {
+		display: flex;
+		flex-direction: column;
+		margin-left: 10px;
+	}
+
+	.degree_three_day {
+		margin-top: 10px;
+	}
+	
+	.day_name p {
+		font-size: 2rem;
+		color: blanchedalmond;
+	}
+
+	.degree_three_day p {
+		font-size: 7rem;
+		color: blanchedalmond;
+	}
+
+}
+
+@media (max-width: 600px) {
+	.weather_three_day {
+		display: flex;
+		justify-content: center;
+	}
+
+	.wrapper_weather {
+		display: flex;
+		flex-direction: column;
+		margin-left: 7px;
+	}
+
+	.degree_three_day {
+		margin-top: 10px;
+	}
+	
+	.day_name p {
+		font-size: 1.5rem;
+		color: blanchedalmond;
+	}
+
+	.degree_three_day p {
+		font-size: 4rem;
+		color: blanchedalmond;
+	}
+
+	.img_three_day img {
+		width: 30px;
+		height: 30px;
+	}
+
+}
+
+@media (max-width: 450px) {
+	.weather_three_day {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.wrapper_weather {
+		display: flex;
+		flex-direction: column;
+		
+		margin-left: 0px;
+	}
+
+	.degree_three_day {
+		margin-top: 10px;
+	}
+	
+	.day_name p {
+		font-size: 1.2rem;
+		color: blanchedalmond;
+	}
+
+	.degree_three_day p {
+		font-size: 3rem;
+		color: blanchedalmond;
+	}
+
+	.img_three_day img {
+		width: 20px;
+		height: 20px;
+	}
+
 }
