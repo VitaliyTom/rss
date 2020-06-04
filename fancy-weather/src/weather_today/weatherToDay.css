@@ -1,25 +1,31 @@
+.weather {
+	display: flex;
+	justify-content: center;
+}
+
 .weather_today {
-	margin: 70px 0px 0;
-	/* width: 50%; */
+	width: 100%;
+	padding: 20px 40px 20px;
+	margin: 0 3px;
+	border-radius: 8px;
+	background-color: rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 10px 1px rgb(245, 211, 60);
 }
 
 .region p {
 	font-size: 3rem;
-	color: blanchedalmond;
+	text-align: center;
+	color: rgb(245, 211, 60);
 }
 
 .container_weather {
 	display: flex;
-	/* width: 60%; */
+	justify-content: center;
 }
 
 .weather_temperature p {
 	font-size: 25rem;
-	color: blanchedalmond;
-}
-
-.info {
-	margin-left: 100px;
+	color: rgb(245, 211, 60);
 }
 
 .info ul {
@@ -28,103 +34,81 @@
 
 .info li {
 	font-size: 2.3rem;
-	color: blanchedalmond;
+	color: rgb(245, 211, 60);
 	list-style-type: none;
 }
+
 .temperature_img img {
 	width: 125px;
 	height: 125px;
 }
 
-@media (max-width: 1200px){
-	.weather_today{
-		display: block;
-		margin: 40px auto 0;
+@media (max-width: 1170px) {
+	.wrapper_weather {
+		width: 100%;
 	}
 
-	.region p {
-		font-size: 2rem;
-		color: blanchedalmond;
+	.weather_today {
+		margin: 0 25px;
+		width: 100%;
 	}
 
 	.weather_temperature p {
-		font-size: 17rem;
-		color: blanchedalmond;
+		font-size: 15rem;
 	}
 
-	.info {
-		margin-left: 40px;
+	.container_weather {
+		display: flex;
+		justify-content: space-evenly;
 	}
-	
+
 	.info ul {
-		margin-top: 5px;
+		margin-top: 10px;
 	}
-	
+
 	.info li {
-		font-size: 1.7rem;
-		color: blanchedalmond;
+		font-size: 1.8rem;
+		color: rgb(245, 211, 60);
 		list-style-type: none;
 	}
+
 	.temperature_img img {
 		width: 100px;
 		height: 100px;
 	}
 }
 
-@media (max-width: 600px){
-	.weather_today{
-		display: block;
-		margin: 40px auto 0;
+@media (max-width: 650px) {
+	.weather_today {
+		padding: 20px 20px 20px;
 	}
 
 	.region p {
-		text-align: center;
-		font-size: 1.5rem;
-		color: blanchedalmond;
+		font-size: 1.8rem;
 	}
 
 	.weather_temperature p {
-		font-size: 10rem;
-		color: blanchedalmond;
-	}	
-	
-	.info li {
-		font-size: 1.4rem;
-		color: blanchedalmond;
-		list-style-type: none;
+		font-size: 13rem;
 	}
+
 	.temperature_img img {
-		margin-top: 10px;
-		width: 35px;
-		height: 35px;
+		width: 15vw;
+		height: 15vw;
 	}
 }
 
-@media (max-width: 450px){
-	.weather_today{
-		display: block;
-		margin: 0 auto 0;
+@media (max-width: 450px) {
+	.container_weather {
+		flex-direction: column;
 	}
 
-	.region p {
+	.temperature p {
 		text-align: center;
-		font-size: 1.5rem;
-		color: blanchedalmond;
 	}
 
-	.weather_temperature p {
-		font-size: 7rem;
-		color: blanchedalmond;
-	}	
-	
-	.info li {
-		font-size: 1.2rem;
-		color: blanchedalmond;
-		list-style-type: none;
-	}
-	.temperature_img img {
-		margin-top: 10px;
-		width: 35px;
-		height: 35px;
+	.info {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
 	}
 }
