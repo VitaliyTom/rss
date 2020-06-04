@@ -13,67 +13,58 @@
 
 <body>
     <img class="back_ground" src="" alt="">
-    <div class="control_block">
-        <div class="container_button">
-            <div class="wrapper_refresh_img">
-                <button class="refresh_img_btn">
-                    <div class="spinner"></div>
-                </button>
+    <div class="wrapper">
+        <div class="control_block">
+            <div class="container_button">
+                <div class="wrapper_refresh_img">
+                    <button class="refresh_img_btn">
+                        <div class="spinner"></div>
+                    </button>
+                </div>
+                <div class="wrapper_language">
+                    <ul class="language">
+                        <li class="a">
+                            <p class="lang">Eng</p>
+                        </li>
+                        <li class="b">
+                            <p class="lang">Eng</p>
+                        </li>
+                        <li class="c">
+                            <p class="lang">Rus</p>
+                        </li>
+                        <li class="d">
+                            <p class="lang">Blr</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="wrapper_change_degree">
+                    <button class="degree_fahrenheit_btn" value="F">°F</button>
+                    <button class="degree_сelsius_btn" value="C">°C</button>
+                </div>
             </div>
-            <div class="wrapper_language">
-                <ul class="language">
-                    <li class="a">
-                        <p class="lang">Eng</p>
-                    </li>
-                    <li class="b">
-                        <p class="lang">Eng</p>
-                    </li>
-                    <li class="c">
-                        <p class="lang">Rus</p>
-                    </li>
-                    <li class="d">
-                        <p class="lang">Blr</p>
-                    </li>
-                </ul>
-
-                <!-- <button class="language">en</button> -->
+            <div class="container_search">
+                <form class="form_search" action="#">
+                    <input class="search_input active" type="text" placeholder="Search city" minlength="3">
+                    <button class="search_btn" type="submit">search</button>
+                </form>
             </div>
-            <div class="wrapper_change_degree">
-                <button class="degree_fahrenheit_btn" value="F">°F</button>
-                <button class="degree_сelsius_btn" value="C">°C</button>
-            </div>
-
         </div>
-        <div class="container_search">
-            <form class="form_search" action="#">
-                <input class="search_input" type="text" placeholder="Search city">
-                <button class="search_btn" type="submit">search</button>
-            </form>
+        <div class="container_content">
+            <div class="wrapper_weather">
+                <div class="weather">
+
+                    <div class="weather_today"></div>
+                </div>
+            </div>
+            <div class="wrapper_map">
+                <div id="map"></div>
+            </div>
         </div>
     </div>
-    <div class="weather">
-
-        <div class="weather_today">
-
-            
-        </div>
-        <div class="wrapper_map">
-            <div id="map"></div>
-        </div>
-        
-        <!-- <div class="coordinates">dfgbdb</div> -->
-    </div>
-
-
-
-
 
     <script src="script.js"></script>
     <script src="src/geolocation/map.js" type="module"></script>
     <script src="src/control_block/control.js" type="module"></script>
-    <!-- <script src="src/geolocation/map.js" type="module"></script> -->
-    <!-- <script src="src/weather_today/weatherToDay.js" type="module"></script> -->
-    <!-- <script src="src/three_day_weather/threeDayWeather.js" type="module"></script> -->
 </body>
 
 </html>
