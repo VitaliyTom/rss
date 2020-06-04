@@ -1,13 +1,4 @@
-function Weather(
-	lat,
-	lon,
-	temp,
-	feelslike,
-	humidity,
-	wind,	
-	localtime,
-	weather_code,	
-) {
+function Weather(lat, lon, temp, feelslike, humidity, wind, localtime, weather_code) {
 	this.lat = lat;
 	this.lon = lon;
 	this.temp = temp;
