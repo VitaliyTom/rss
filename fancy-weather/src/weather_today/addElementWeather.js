@@ -1,3 +1,7 @@
+import { getLanguage } from '../general/lng.js';
+import { translateCommonWords } from '../general/translateCommonWords.js';
+import { weatherConditions } from '../general/weatherConditions.js';
+
 function localDate() {
 	const locDate = document.querySelector('.date');
 	setInterval(() => {
@@ -21,6 +25,8 @@ function localDate() {
 function addElementWeather(weatherObj, regionCity) {
 	const weatherToday = document.querySelector('.weather_today');
 	const region = document.querySelector('.region');
+	const searchInput = document.querySelector('.search_input');
+	const searchBtn = document.querySelector('.search_btn');
 
 	let result = '';
 	result = `
@@ -41,10 +47,11 @@ function addElementWeather(weatherObj, regionCity) {
                 <img src="src/img/${weatherObj.weather_code}.svg" alt="${weatherObj.weather_code}">
             </div>
             <ul>
-                <li>${weatherObj.weather_code.replace('_', ' ')}</li>
-                <li>feelslike: ${weatherObj.feelslike.value}°</li>
-                <li>wind: ${weatherObj.wind.value} ${weatherObj.wind.units}</li>
-                <li>humidity: ${weatherObj.humidity.value}%</li>
+                <li>${weatherConditions[weatherObj.weather_code][getLanguage()]}</li>
+                <li>${translateCommonWords.feelslike[getLanguage()]}: ${weatherObj.feelslike.value}°</li>
+                <li>${translateCommonWords.wind[getLanguage()]}: ${weatherObj.wind.value} ${translateCommonWords
+		.windUnits[getLanguage()]}</li>
+                <li>${translateCommonWords.humidity[getLanguage()]}: ${weatherObj.humidity.value}%</li>
             </ul>
         </div>
     </div>`;
@@ -68,10 +75,16 @@ function addElementWeather(weatherObj, regionCity) {
 
 	wrapperMap.insertAdjacentHTML(
 		'beforeEnd',
-		`<div class="coordinates"><div class="lat">Latitude: ${localStorage.getItem('DMS_lat')}</div>
-	<div class="lon">Longitude: ${localStorage.getItem('DMS_lon')}</div> </div>`
+		`<div class="coordinates"><div class="lat">${translateCommonWords.latitude[
+			getLanguage()
+		]}: ${localStorage.getItem('DMS_lat')}</div>
+	<div class="lon">${translateCommonWords.longitude[getLanguage()]}: ${localStorage.getItem('DMS_lon')}</div> </div>`
 	);
+
 	localDate();
+	searchInput.setAttribute('placeholder', translateCommonWords.search[getLanguage()]);
+	searchInput.classList.remove('active');
+	searchBtn.innerText = `${translateCommonWords.searchBtn[getLanguage()]}`;
 }
 
 export default addElementWeather;
