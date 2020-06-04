@@ -17,44 +17,42 @@ html {
 
 body {
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	margin: 0 auto;
 	padding-top: 1px;
 	font-size: 1.2rem;
-	background: black;
 	z-index: 100;
+	background-color: rgb(41, 39, 39);
 }
 
-.weather {
+.wrapper {
+	width: 100%;
+	max-width: 1300px;
+	margin: 0 auto;
+}
+
+.container_content {
 	display: flex;
 	justify-content: space-between;
-	margin: 0px 70px 0;
+	flex-wrap: wrap;
+	margin-top: 40px;
 }
 
-@media (max-width: 1200px) {
-	.weather {
-		display: flex;
-		justify-content: space-between;
-		flex-direction: column;
-		margin: 0px 70px 0;
+@media (max-width: 1170px) {
+	.container_content {
+		margin-top: 20px;
 	}
-}
 
-@media (max-width: 600px) {
-	.weather {
-		display: flex;
-		justify-content: space-between;
-		flex-direction: column;
-		margin: 0px 45px 0;
+	.wrapper {
+		width: 100%;
+		max-width: 1000px;
+		margin: 0 auto;
 	}
-}
 
-@media (max-width: 450px) {
-	.weather {
+	.container_content {
 		display: flex;
-		justify-content: space-between;
-		flex-direction: column;
-		margin: 0;
-		width: 310px;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-top: 20px 40px;
 	}
 }
