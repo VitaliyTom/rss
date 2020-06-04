@@ -16,7 +16,12 @@
 .control_block {
 	display: flex;
 	justify-content: space-between;
-	margin: 70px 70px 0;
+
+	margin: 70px 3px 0;
+	background-color: rgb(0, 0, 0, 0.5);
+	box-shadow: 0 0 10px 1px rgb(245, 211, 60);
+	border-radius: 8px;
+	padding: 20px;
 }
 
 .container_button {
@@ -24,7 +29,7 @@
 }
 
 .refresh_img_btn {
-	margin-left: 10px;
+	margin-right: 10px;
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
@@ -52,20 +57,14 @@
 }
 
 .language {
+	position: relative;
 	width: 55px;
 	height: 45px;
-	margin-left: 10px;
+
 	border: none;
 	border-radius: 8px;
-	background-color: rgb(209, 209, 209);
+	background-color: rgb(245, 211, 60);
 	font-size: 1.5rem;
-	/* text-transform: uppercase; */
-}
-
-/* button select lang */
-
-.language {
-	position: relative;
 }
 
 .language li {
@@ -80,12 +79,12 @@
 
 .lang {
 	margin-top: 50%;
-	transform: translate(0, -50%);
+	transform: translate(0, -80%);
 	text-align: center;
 }
 
 .a {
-	background-color: rgb(209, 209, 209);
+	background-color: rgb(245, 211, 60);
 	z-index: 100;
 	border-radius: 8px;
 }
@@ -94,14 +93,14 @@
 	border-top: 1px solid black;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-	background-color: rgb(209, 209, 209);
+	background-color: rgb(245, 211, 60);
 	z-index: 99;
 	top: 45px;
 }
 
 .c.active {
 	border-top: 1px solid black;
-	background-color: rgb(209, 209, 209);
+	background-color: rgb(245, 211, 60);
 	z-index: 98;
 	top: 90px;
 }
@@ -110,7 +109,7 @@
 	border-top: 1px solid black;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
-	background-color: rgb(209, 209, 209);
+	background-color: rgb(245, 211, 60);
 	z-index: 97;
 	top: 135px;
 }
@@ -119,9 +118,8 @@
 .b.active:hover,
 .c.active:hover,
 .d.active:hover {
-	background-color: aquamarine;
+	background-color: rgb(184, 160, 53);
 	color: black;
-	opacity: 0.8;
 }
 
 .wrapper_change_degree {
@@ -133,46 +131,49 @@
 	border: none;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
-	opacity: 0.5;
 }
 
 .degree_сelsius_btn {
 	border: none;
 	border-top-right-radius: 8px;
 	border-bottom-right-radius: 8px;
-	opacity: 0.5;
 }
 
 .degree_fahrenheit_btn.active,
 .degree_сelsius_btn.active {
 	transition: 0.4s;
-	background-color: rgb(209, 209, 209);
+	background-color: rgb(245, 211, 60);
 	color: black;
-	opacity: 1;
 }
 
-.refresh_img_btn,
 .degree_fahrenheit_btn,
 .degree_сelsius_btn {
 	width: 45px;
 	height: 45px;
-	background-color: rgb(209, 209, 209);
+	background-color: rgb(245, 211, 60);
 }
 
 .degree_fahrenheit_btn,
 .degree_сelsius_btn {
-	background-color: black;
-	color: aliceblue;
+	background-color: rgba(255, 255, 255, 0.5);
+	color: rgb(245, 211, 60);
 }
 
+.refresh_img_btn {
+	background-color: rgb(245, 211, 60);
+	width: 45px;
+	height: 45px;
+}
 .refresh_img_btn:hover,
 .degree_fahrenheit_btn:hover,
 .degree_сelsius_btn:hover,
-.search_btn:hover {
-	background-color: aquamarine;
+.search_btn:hover,
+.language:hover {
+	background-color: rgb(245, 211, 60);
+	box-shadow: 0 0 10px 2px rgb(60, 245, 91);
 	color: black;
-	opacity: 0.8;
-	transition: 1s;
+	transition: 0.3s;
+	z-index: 100;
 }
 
 .form_search {
@@ -181,122 +182,72 @@
 }
 
 .search_input {
-	width: 300px;
+	width: 400px;
 	height: 45px;
 	padding-left: 10px;
-	font-size: 3rem;
-	color: white;
+	font-size: 2.5rem;
+	color: rgb(245, 211, 60);
 	border: none;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
-	background-color: black;
-	opacity: 0.5;
+	background-color: rgba(255, 255, 255, 0.5);
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-shadow: 0px 0px 10px black;
+}
+
+.search_input::placeholder {
+	color: wheat;
+}
+
+.search_input.active::placeholder {
+	color: red;
 }
 
 .search_btn {
 	width: 100px;
 	height: 45px;
-	margin-right: 10px;
+	/* margin-right: 10px; */
 	border: none;
 	border-top-right-radius: 8px;
 	border-bottom-right-radius: 8px;
 	text-transform: uppercase;
-	background-color: rgb(209, 209, 209);
+	background-color: rgb(245, 211, 60);
 }
 
-@media (max-width: 1200px) {
-	.language {
-		width: 45px;
-		height: 35px;
-		margin-left: 10px;
-		border: none;
-		border-radius: 8px;
-		background-color: rgb(209, 209, 209);
-		font-size: 1.5rem;
-		/* text-transform: uppercase; */
-	}
-
-	.language li {
-		width: 45px;
-		height: 35px;
-	}
-
-	.b.active {
-		top: 35px;
-	}
-
-	.c.active {
-		top: 70px;
-	}
-
-	.d.active {
-		top: 105px;
-	}
-
-	.refresh_img_btn,
-	.degree_fahrenheit_btn,
-	.degree_сelsius_btn {
-		width: 35px;
-		height: 35px;
-		background-color: rgb(209, 209, 209);
+@media (max-width: 1170px) {
+	.control_block {
+		margin: 40px 25px 0;
 	}
 
 	.search_input {
-		width: 200px;
-		height: 35px;
-		padding-left: 10px;
-		font-size: 2rem;
-	}
-
-	.search_btn {
-		width: 70px;
-		height: 35px;
+		width: 100%;
+		margin-left: 10px;
 	}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 	.control_block {
-		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		margin: 70px 30px 0;
+		margin: 40px 25px 0;
 	}
 
 	.search_input {
-		width: 200px;
-		height: 35px;
-		padding-left: 10px;
-		font-size: 2rem;
 		margin-top: 10px;
 	}
 
 	.search_btn {
 		margin-top: 10px;
-		width: 70px;
-		height: 35px;
 	}
 }
-
 
 @media (max-width: 450px) {
-	.control_block {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		margin: 35px 0 0;
+	.container_button {
+		justify-content: space-between;
 	}
-
 	.search_input {
-		width: 200px;
-		height: 35px;
-		padding-left: 10px;
+		margin: 10px 0 0 0;
 		font-size: 2rem;
-		margin-top: 10px;
-	}
-
-	.search_btn {
-		margin-top: 10px;
-		width: 70px;
-		height: 35px;
 	}
 }
