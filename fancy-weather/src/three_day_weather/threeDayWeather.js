@@ -1,6 +1,4 @@
 import Weather from '../weather_today/weatherObj.js';
-import addElementThreeWeather from '../three_day_weather/addElementThreeWeather.js';
-// const apikey = 'vuRjVVld9hdH7Zu2pJbcd5H0A9RVpd7O';
 const apikey = 'Kt54Fx3bkNTsFKsyh2GoZY8jwKfANf6e';
 
 function url() {
@@ -33,8 +31,21 @@ async function getThreeWeather() {
 			);
 			weatherObjArray.push(weatherObj);
 		});
-
-		addElementThreeWeather(weatherObjArray);
+		localStorage.setItem('averageTemp', (parsed[0].temp[0].min.value + parsed[0].temp[1].max.value) / 2);
+		localStorage.setItem(
+			'averageFeelsLike',
+			(parsed[0].feels_like[0].min.value + parsed[0].feels_like[1].max.value) / 2
+		);
+		localStorage.setItem(
+			'averageHumidity',
+			(parsed[0].humidity[0].min.value + parsed[0].humidity[1].max.value) / 2
+		);
+		localStorage.setItem(
+			'averageWind',
+			(parsed[0].wind_speed[0].min.value + parsed[0].wind_speed[1].max.value) / 2
+		);
+		localStorage.setItem('weatherCode', parsed[0].weather_code.value);
+		return weatherObjArray;
 	} catch (error) {
 		console.log('Превышен лимит запросов на погоду, обновите страницу позже');
 	}
