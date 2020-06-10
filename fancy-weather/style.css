@@ -21,8 +21,36 @@ body {
 	margin: 0 auto;
 	padding-top: 1px;
 	font-size: 1.2rem;
-	z-index: 100;
-	background-color: rgb(41, 39, 39);
+	z-index: -5;
+	background: url('./src/img/city_street.jpg');
+}
+
+.back_ground {
+	display: none;
+}
+
+.back_ground.active {
+	position: absolute;
+	display: inline-block;
+	width: 25vw;
+	height: 25vw;
+	left: 35%;
+	top: 25%;
+	background-color: rgba(5, 7, 8, 0.5);
+	box-shadow: 0 -10px 10px 1px coral inset, 10px 0 10px 1px darkturquoise, 0 10px 10px 1px gold inset,
+		-10px 0 10px 1px chartreuse;
+	border-radius: 50%;
+	z-index: 150;
+	animation: back_ground_bar 0.5s linear infinite;
+}
+
+@keyframes back_ground_bar {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 .wrapper {
