@@ -98,22 +98,19 @@ export async function nameRegion(coordinates) {
 function allRequest(coordinates) {
 	const backGroundBar = document.querySelector('.back_ground');
 	backGroundBar.classList.add('active');
-	Promise.all([
-		replaceImg(),
-		nameRegion(coordinates),
-		getWeather(),
-		getThreeWeather()
-		// map(coordinates)
-	])
+	Promise.all([ replaceImg(), nameRegion(coordinates), getWeather(), getThreeWeather() ])
 		.then(([ img, region, weatherObj, weatherObjArray ]) => {
 			const backGround = document.querySelector('body');
 			const spinner = document.querySelector('.spinner');
-			backGround.style.backgroundImage = `url(${img})`;
-			backGround.style.backgroundSize = 'cover';
-			backGround.style.backgroundRepeat = 'no-repeat';
-			backGround.style.transition = '1s';
-			backGround.style.transitionDelay = '1s';
-			spinner.classList.remove('active');
+			if (img) {
+				backGround.style.backgroundImage = `url(${img})`;
+				backGround.style.backgroundSize = 'cover';
+				backGround.style.backgroundRepeat = 'no-repeat';
+				backGround.style.transition = '1s';
+				backGround.style.transitionDelay = '1s';
+				spinner.classList.remove('active');
+			}
+
 			setTimeout(addElement, 1000, weatherObj, region, weatherObjArray);
 		})
 		.catch((error) => console.error(`Response api return: ${error}`));
