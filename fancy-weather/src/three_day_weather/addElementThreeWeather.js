@@ -1,4 +1,4 @@
-import dayName from '../general/day.js';
+import { dayName } from '../general/day.js';
 import { getLanguage } from '../general/lng.js';
 
 function addElementThreeWeather(weatherObj) {
