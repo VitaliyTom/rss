@@ -4,16 +4,27 @@ import { map } from '../geolocation/map.js';
 import { nameRegion } from '../geolocation/map.js';
 import { translateCommonWords } from '../general/translateCommonWords.js';
 import { getLanguage } from '../general/lng.js';
+import getThreeWeather from '../three_day_weather/threeDayWeather.js';
 
 const controlBlock = document.querySelector('.control_block');
 const client_id = 'YcOZjTnZyaoo2rVD0K3ZYSlVYGwpyJxwhqZMzc-R5to';
+// const client_id = 'e2077ad31a806c894c460aec8f81bc2af4d09c4f8104ae3177bb809faf0eac17';
+const backGroundBar = document.querySelector('.back_ground');
 const spinner = document.querySelector('.spinner');
 const degreeCelsiusBtn = document.querySelector('.degree_сelsius_btn');
 const degreeFahrenheitBtn = document.querySelector('.degree_fahrenheit_btn');
 const languageLiAll = document.querySelectorAll('.language li');
 const searchInput = document.querySelector('.search_input');
+import addElementWeather from '../weather_today/addElementWeather.js';
+import addElementThreeWeather from '../three_day_weather/addElementThreeWeather.js';
 
-localStorage.setItem('lang', 'Eng');
+backGroundBar.classList.add('active');
+
+if (!localStorage.hasOwnProperty('lang')) {
+	localStorage.setItem('lang', 'Eng');
+} else {
+	document.querySelector('.a').firstElementChild.innerText = localStorage.getItem('lang');
+}
 
 if (!localStorage.hasOwnProperty('degree')) {
 	localStorage.setItem('degree', 'C');
@@ -35,7 +46,6 @@ function getMonth(numberMonth) {
 	} else if (numberMonth === 8 || numberMonth === 9 || numberMonth === 10) {
 		timeOfYear = 'autumn';
 	}
-
 	return timeOfYear;
 }
 
@@ -54,15 +64,11 @@ async function replaceImg() {
 	try {
 		const response = await fetch(url());
 		const parsed = await response.json();
-
 		const img = parsed.urls.regular;
-		const backGround = document.querySelector('body');
-		backGround.style.backgroundImage = `url(${img})`;
-		backGround.style.backgroundSize = 'cover';
-		backGround.style.backgroundRepeat = 'no-repeat';
-		spinner.classList.remove('active');
+		return img;
 	} catch (error) {
 		console.log('Превышен лимит запросов на фоновую картинку, обновите страницу позже');
+		spinner.classList.remove('active');
 	}
 }
 
@@ -92,6 +98,7 @@ async function getCoordinates(city) {
 		};
 		localStorage.setItem('lat', coordinates.lat);
 		localStorage.setItem('lon', coordinates.lon);
+
 		geolocation(coordinates);
 	} catch (error) {
 		searchInput.setAttribute('placeholder', translateCommonWords.error[getLanguage()]);
@@ -108,14 +115,14 @@ controlBlock.addEventListener('click', (event) => {
 			lat: localStorage.getItem('lat'),
 			lon: localStorage.getItem('lon')
 		};
-		replaceImg();
-		map(coordinates);
-		nameRegion(coordinates);
+
+		geolocation(coordinates);
 	}
 	//		search button
 	if (event.target.closest('.search_btn')) {
 		const searchInput = document.querySelector('.search_input');
 		const city = searchInput.value.toString();
+
 		document.querySelector('.form_search').reset();
 		getCoordinates(city);
 	}
@@ -131,7 +138,10 @@ controlBlock.addEventListener('click', (event) => {
 			city: localStorage.getItem('regionCity'),
 			residential: localStorage.getItem('residential')
 		};
-		getWeather(region);
+		Promise.all([ getWeather(), getThreeWeather() ]).then(([ weatherObj, weatherObjArray ]) => {
+			addElementWeather(weatherObj, region);
+			addElementThreeWeather(weatherObjArray);
+		});
 	}
 
 	//		button select lang
@@ -144,12 +154,20 @@ controlBlock.addEventListener('click', (event) => {
 	if (event.target.closest('.b') || event.target.closest('.c') || event.target.closest('.d')) {
 		document.querySelector('.a').firstElementChild.innerText = event.target.innerText;
 		localStorage.setItem('lang', event.target.innerText);
-		const coordinates = {
-			lat: localStorage.getItem('lat'),
-			lon: localStorage.getItem('lon')
-		};
-		map(coordinates);
-		nameRegion(coordinates);
+		Promise.all([			
+			nameRegion(coordinates),
+			getWeather(),
+			getThreeWeather()
+		]).then(([region, weatherObj, weatherObjArray ]) => {
+			addElementWeather(weatherObj, region);
+			addElementThreeWeather(weatherObjArray);
+			const coordinates = {
+				lat: localStorage.getItem('lat'),
+				lon: localStorage.getItem('lon')
+			};
+			map(coordinates);
+		});
+
 		deleteActiveLi();
 	} else if (
 		!event.target.closest('.b') &&
