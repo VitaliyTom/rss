@@ -12,7 +12,10 @@
 </head>
 
 <body>
-    <img class="back_ground" src="" alt="">
+    <div class="back_ground">
+        <div class="progress_bar"></div>
+    </div>
+    <!-- <img class="back_ground" src="" alt=""> -->
     <div class="wrapper">
         <div class="control_block">
             <div class="container_button">
@@ -52,12 +55,38 @@
         <div class="container_content">
             <div class="wrapper_weather">
                 <div class="weather">
-
-                    <div class="weather_today"></div>
+                    <div class="weather_today">
+                        <div class="region">
+                            <p class="city_name"></p>
+                            <p class="date"></p>
+                        </div>
+                        <div class="container_weather">
+                            <div class="weather_temperature">
+                                <div class="temperature">
+                                    <p class="temp_value"></p>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <div class="temperature_img">
+                                    <img src="" alt="" class="temp_img">
+                                </div>
+                                <ul class="weather_description">
+                                    <li class="weather_conditions"></li>
+                                    <li class="weather_feelslike"></li>
+                                    <li class="weather_wind"></li>
+                                    <li class="weather_humidity"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="wrapper_map">
                 <div id="map"></div>
+                <div class="coordinates">
+                    <div class="lat"></div>
+                    <div class="lon"></div>
+                </div>
             </div>
         </div>
     </div>
