@@ -68,6 +68,12 @@ async function replaceImg() {
 		return img;
 	} catch (error) {
 		console.log('Превышен лимит запросов на фоновую картинку, обновите страницу позже');
+		const backGround = document.querySelector('body');
+		backGround.style.backgroundImage = `url('./src/img/city_street.jpg')`;
+		backGround.style.backgroundSize = 'cover';
+		backGround.style.backgroundRepeat = 'no-repeat';
+		backGround.style.transition = '1s';
+		backGround.style.transitionDelay = '1s';
 		spinner.classList.remove('active');
 	}
 }
@@ -154,17 +160,17 @@ controlBlock.addEventListener('click', (event) => {
 	if (event.target.closest('.b') || event.target.closest('.c') || event.target.closest('.d')) {
 		document.querySelector('.a').firstElementChild.innerText = event.target.innerText;
 		localStorage.setItem('lang', event.target.innerText);
-		Promise.all([			
+		const coordinates = {
+			lat: localStorage.getItem('lat'),
+			lon: localStorage.getItem('lon')
+		};
+		Promise.all([
 			nameRegion(coordinates),
 			getWeather(),
 			getThreeWeather()
-		]).then(([region, weatherObj, weatherObjArray ]) => {
+		]).then(([ region, weatherObj, weatherObjArray ]) => {
 			addElementWeather(weatherObj, region);
 			addElementThreeWeather(weatherObjArray);
-			const coordinates = {
-				lat: localStorage.getItem('lat'),
-				lon: localStorage.getItem('lon')
-			};
 			map(coordinates);
 		});
 
