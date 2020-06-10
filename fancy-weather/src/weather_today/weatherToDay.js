@@ -1,8 +1,6 @@
 import Weather from './weatherObj.js';
-import addElementWeather from './addElementWeather.js';
-import getThreeWeather from '../three_day_weather/threeDayWeather.js';
-// const apikey = 'vuRjVVld9hdH7Zu2pJbcd5H0A9RVpd7O';
-const apikey = 'Kt54Fx3bkNTsFKsyh2GoZY8jwKfANf6e';
+
+const apikey = 'vuRjVVld9hdH7Zu2pJbcd5H0A9RVpd7O';
 
 function url() {
 	const lat = localStorage.hasOwnProperty('lat') ? localStorage.getItem('lat') : 53.902334;
@@ -15,7 +13,7 @@ function url() {
 		: 'us'}&fields=feels_like%2Ctemp%2Chumidity%2Cwind_speed%2Cweather_code&apikey=${apikey}`;
 }
 
-async function getWeather(region) {
+async function getWeather() {
 	try {
 		const response = await fetch(url());
 		const parsed = await response.json();
@@ -30,9 +28,7 @@ async function getWeather(region) {
 			parsed.observation_time.value,
 			parsed.weather_code.value
 		);
-
-		addElementWeather(weatherObj, region);
-		getThreeWeather();
+		return weatherObj;
 	} catch (error) {
 		console.log('Превышен лимит запросов на погоду, обновите страницу позже');
 	}
