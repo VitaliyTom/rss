@@ -1,4 +1,4 @@
-const dayName = {
+export const dayName = {
 	0: [ 'Sunday', 'Воскресенье', 'Нядзеля' ],
 	1: [ 'Monday', 'Понедельник', 'Панядзелак' ],
 	2: [ 'Tuesday', 'Вторник', 'Аўторак' ],
@@ -8,4 +8,12 @@ const dayName = {
 	6: [ 'Saturday', 'Суббота', 'Субота' ]
 };
 
-export default dayName;
+export const dayNameAbbreviat = {
+	0: [ 'Sun', 'Вск', 'Няд' ],
+	1: [ 'Mon', 'Пнд', 'Пнд' ],
+	2: [ 'Tue', 'Втр', 'Аўт' ],
+	3: [ 'Wed', 'Срд', 'Сер' ],
+	4: [ 'Thu', 'Чтв', 'Чцв' ],
+	5: [ 'Fri', 'Птн', 'Пят' ],
+	6: [ 'Sat', 'Сбт', 'Суб' ]
+};
