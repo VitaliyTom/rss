@@ -1,24 +1,45 @@
 import getWeather from '../weather_today/weatherToDay.js';
 import { geolocation } from '../geolocation/map.js';
-import { map } from '../geolocation/map.js';
 import { nameRegion } from '../geolocation/map.js';
 import { translateCommonWords } from '../general/translateCommonWords.js';
 import { getLanguage } from '../general/lng.js';
 import getThreeWeather from '../three_day_weather/threeDayWeather.js';
+import addElementWeather from '../weather_today/addElementWeather.js';
+import addElementThreeWeather from '../three_day_weather/addElementThreeWeather.js';
 
 const controlBlock = document.querySelector('.control_block');
-const client_id = 'YcOZjTnZyaoo2rVD0K3ZYSlVYGwpyJxwhqZMzc-R5to';
-// const client_id = 'e2077ad31a806c894c460aec8f81bc2af4d09c4f8104ae3177bb809faf0eac17';
-const backGroundBar = document.querySelector('.back_ground');
+// const client_id = 'YcOZjTnZyaoo2rVD0K3ZYSlVYGwpyJxwhqZMzc-R5to';
+const client_id = 'e2077ad31a806c894c460aec8f81bc2af4d09c4f8104ae3177bb809faf0eac17';
+const backGroundBar = document.querySelector('.wrapper_progress_bar');
 const spinner = document.querySelector('.spinner');
 const degreeCelsiusBtn = document.querySelector('.degree_сelsius_btn');
 const degreeFahrenheitBtn = document.querySelector('.degree_fahrenheit_btn');
 const languageLiAll = document.querySelectorAll('.language li');
 const searchInput = document.querySelector('.search_input');
-import addElementWeather from '../weather_today/addElementWeather.js';
-import addElementThreeWeather from '../three_day_weather/addElementThreeWeather.js';
+const theme = document.querySelector('.wrapper_theme');
+
+// -------------------------  theme  -------------------------
+const themeDay = document.querySelector('.theme_day_btn');
+const themeNight = document.querySelector('.theme_night_btn');
+const weatherToday = document.querySelector('.weather_today');
+const weatherThreeDay = document.querySelector('.weather_three_day');
+const wrapperMap = document.querySelector('.wrapper_map');
+const body = document.querySelector('body');
+const mapElement = document.getElementById('map');
 
 backGroundBar.classList.add('active');
+searchInput.classList.remove('active');
+searchInput.setAttribute('placeholder', translateCommonWords.search[getLanguage()]);
+
+if (!localStorage.hasOwnProperty('theme')) {
+	localStorage.setItem('theme', 'dark');
+}
+
+if (localStorage.getItem('theme') === 'lite') {
+	liteTheme();
+} else {
+	darkTheme();
+}
 
 if (!localStorage.hasOwnProperty('lang')) {
 	localStorage.setItem('lang', 'Eng');
@@ -60,22 +81,32 @@ function url() {
 	return url;
 }
 
-async function replaceImg() {
-	try {
-		const response = await fetch(url());
-		const parsed = await response.json();
-		const img = parsed.urls.regular;
-		return img;
-	} catch (error) {
-		console.log('Превышен лимит запросов на фоновую картинку, обновите страницу позже');
-		const backGround = document.querySelector('body');
-		backGround.style.backgroundImage = `url('./src/img/city_street.jpg')`;
-		backGround.style.backgroundSize = 'cover';
-		backGround.style.backgroundRepeat = 'no-repeat';
-		backGround.style.transition = '1s';
-		backGround.style.transitionDelay = '1s';
-		spinner.classList.remove('active');
-	}
+function replaceImg() {
+	const img = fetch(url())
+		.then((response) => {
+			if (response.status >= 400) {
+				console.log(response.status);
+				// throw new Error(`Response api return: ${response.status}`);
+				return Promise.reject(new Error(response.statusText));
+				// throw new Error(response.statusText, response.status);
+			}
+			return Promise.resolve(response.json());
+		})
+		.then((parsed) => {
+			const urlimg = parsed.urls.regular;
+			return urlimg;
+		})
+		.catch((error) => {
+			console.log(`Превышен лимит запросов на фоновую картинку, обновите страницу позже : `);
+			const backGround = document.querySelector('body');
+			backGround.style.background = `url('./src/img/city_street.jpg')`;
+			backGround.style.backgroundSize = 'cover';
+			backGround.style.backgroundRepeat = 'no-repeat';
+			backGround.style.transition = '1s';
+			backGround.style.transitionDelay = '1s';
+			spinner.classList.remove('active');
+		});
+	return img;
 }
 
 function deleteActiveLi() {
@@ -113,6 +144,8 @@ async function getCoordinates(city) {
 	}
 }
 
+// -------------------------  Listener  -------------------------
+
 controlBlock.addEventListener('click', (event) => {
 	//		replace background
 	if (event.target.closest('.wrapper_refresh_img')) {
@@ -130,6 +163,8 @@ controlBlock.addEventListener('click', (event) => {
 		const city = searchInput.value.toString();
 
 		document.querySelector('.form_search').reset();
+		searchInput.classList.remove('active');
+
 		getCoordinates(city);
 	}
 
@@ -171,7 +206,6 @@ controlBlock.addEventListener('click', (event) => {
 		]).then(([ region, weatherObj, weatherObjArray ]) => {
 			addElementWeather(weatherObj, region);
 			addElementThreeWeather(weatherObjArray);
-			map(coordinates);
 		});
 
 		deleteActiveLi();
@@ -183,6 +217,36 @@ controlBlock.addEventListener('click', (event) => {
 	) {
 		deleteActiveLi();
 	}
+
+	if (event.target.closest('.theme_day_btn')) {
+		liteTheme();
+	} else if (event.target.closest('.theme_night_btn')) {
+		darkTheme();
+	}
 });
+
+function liteTheme() {
+	localStorage.setItem('theme', 'lite');
+	themeDay.classList.add('active');
+	themeNight.classList.remove('active');
+	controlBlock.classList.add('active');
+	weatherToday.classList.add('active');
+	weatherThreeDay.classList.add('active');
+	wrapperMap.classList.add('active');
+	body.classList.add('active');
+	mapElement.classList.add('active');
+}
+
+function darkTheme() {
+	localStorage.setItem('theme', 'dark');
+	themeNight.classList.add('active');
+	themeDay.classList.remove('active');
+	controlBlock.classList.remove('active');
+	weatherToday.classList.remove('active');
+	weatherThreeDay.classList.remove('active');
+	wrapperMap.classList.remove('active');
+	body.classList.remove('active');
+	mapElement.classList.remove('active');
+}
 
 export default replaceImg;

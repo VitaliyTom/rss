@@ -5,7 +5,16 @@
 	margin: 20px 3px 0;
 	border-radius: 8px;
 	background-color: rgba(0, 0, 0, 0.7);
-	box-shadow: 0 0 10px 1px rgb(245, 211, 60);
+	box-shadow: 0 0 10px 1px #CC99FE;
+}
+
+.weather_three_day.active {
+	background-color: rgba(224, 224, 224, 0.8);
+	box-shadow: 0 0 10px 1px rgb(0, 0, 0) inset;
+}
+
+.weather_three_day.active p {
+	color: rgb(112, 4, 45);
 }
 
 .degree_three_day {
@@ -19,12 +28,12 @@
 .day_name p {
 	font-size: 2.5rem;
 	padding-left: 15%;
-	color: rgb(245, 211, 60);
+	color: #6ac2df;
 }
 
 .degree_three_day p {
 	font-size: 10rem;
-	color: rgb(245, 211, 60);
+	color: rgb(255, 193, 78);
 }
 
 .img_three_day {
@@ -55,7 +64,7 @@
 
 	.degree_three_day p {
 		font-size: 7rem;
-		color: rgb(245, 211, 60);
+		color: rgb(255, 193, 78);
 	}
 }
 
@@ -81,6 +90,6 @@
 
 	.degree_three_day p {
 		font-size: 10vw;
-		color: rgb(245, 211, 60);
+		color: rgb(255, 193, 78);
 	}
 }

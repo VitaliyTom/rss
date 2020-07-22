@@ -44,7 +44,7 @@ function addElementWeather(weatherObj, regionCity) {
 	localDate();
 
 	searchInput.setAttribute('placeholder', translateCommonWords.search[getLanguage()]);
-	searchInput.classList.remove('active');
+	// searchInput.classList.remove('active');
 	searchBtn.innerText = `${translateCommonWords.searchBtn[getLanguage()]}`;
 
 	cityName.innerHTML = `${regionCity.country}, ${regionCity.city} 
@@ -67,19 +67,19 @@ function addElementWeather(weatherObj, regionCity) {
 		weatherObj.weather_code === null ? localStorage.getItem('weatherCode') : weatherObj.weather_code
 	][getLanguage()]}`;
 	weatherFeelslike.innerText = `${translateCommonWords.feelslike[getLanguage()]}: ${Math.round(
-		weatherObj.feelslike.value
+		weatherObj.feelslike.value === null ? localStorage.getItem('averageFeelsLike') : weatherObj.feelslike.value
 	)}°`;
 	weatherWind.innerText = `${translateCommonWords.wind[getLanguage()]}: ${Math.round(
-		weatherObj.wind.value
+		weatherObj.wind.value === null ? localStorage.getItem('averageWind') : weatherObj.wind.value 
 	)} ${translateCommonWords.windUnits[getLanguage()]}`;
 	weather_humidity.innerText = `${translateCommonWords.humidity[getLanguage()]}: ${Math.round(
-		weatherObj.humidity.value
+		weatherObj.humidity.value === null ? localStorage.getItem('averageHumidity') : weatherObj.humidity.value
 	)}%`;
 
 	coordinatesLat.innerText = `${translateCommonWords.latitude[getLanguage()]}: ${localStorage.getItem('DMS_lat')}`;
 	coordinatesLon.innerText = `${translateCommonWords.longitude[getLanguage()]}: ${localStorage.getItem('DMS_lon')}`;
 
-	const backGroundBar = document.querySelector('.back_ground');
+	const backGroundBar = document.querySelector('.wrapper_progress_bar');
 	backGroundBar.classList.remove('active');
 }
 

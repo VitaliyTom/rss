@@ -11,11 +11,17 @@
     <title>fancy-weather</title>
 </head>
 
-<body>
-    <div class="back_ground">
-        <div class="progress_bar"></div>
+<body class="">
+    <div class="wrapper_progress_bar">
+        <div class="progress_bar">
+            <div class="wrp">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
     </div>
-    <!-- <img class="back_ground" src="" alt=""> -->
     <div class="wrapper">
         <div class="control_block">
             <div class="container_button">
@@ -43,6 +49,14 @@
                 <div class="wrapper_change_degree">
                     <button class="degree_fahrenheit_btn" value="F">°F</button>
                     <button class="degree_сelsius_btn" value="C">°C</button>
+                </div>
+                <div class="wrapper_theme">
+                    <button class="theme_day_btn" value="day">
+                        <div class="img_icon_day"></div>
+                    </button>
+                    <button class="theme_night_btn active" value="N">
+                        <div class="img_icon_night"></div>
+                    </button>
                 </div>
             </div>
             <div class="container_search">
@@ -79,6 +93,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="weather_three_day">
+                    
                 </div>
             </div>
             <div class="wrapper_map">

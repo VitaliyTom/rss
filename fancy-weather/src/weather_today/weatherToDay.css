@@ -1,6 +1,7 @@
 .weather {
 	display: flex;
 	justify-content: center;
+	color: #6ac2df;
 }
 
 .weather_today {
@@ -9,14 +10,28 @@
 	margin: 0 3px;
 	border-radius: 8px;
 	background-color: rgba(0, 0, 0, 0.7);
-	box-shadow: 0 0 10px 1px rgb(245, 211, 60);
+	box-shadow: 0 0 10px 1px #CC99FE;
+	/* color: #CC99FE; */
+}
+
+.weather_today.active {
+	background-color: rgba(224, 224, 224, 0.8);
+	box-shadow: 0 0 10px 1px rgb(0, 0, 0) inset;
+	color: rgb(112, 4, 45);
+
 }
 
 .region p {
 	font-size: 3rem;
 	text-align: center;
-	color: rgb(245, 211, 60);
+	/* color: rgb(255, 166, 0); */
 }
+/* .region .temp_value p {
+	font-size: 3rem;
+	text-align: center;
+	color: rgb(255, 166, 0);
+} */
+
 
 .container_weather {
 	display: flex;
@@ -25,8 +40,17 @@
 
 .weather_temperature p {
 	font-size: 25rem;
-	color: rgb(245, 211, 60);
+	color: rgb(255, 193, 78);
 }
+
+.weather_today.active .weather_temperature p {
+	color: rgb(5, 19, 100);
+}
+
+/* .weather_temperature.active p {
+	font-size: 25rem;
+	color: rgb(5, 19, 100);
+} */
 
 .info ul {
 	margin-top: 35px;
@@ -34,13 +58,19 @@
 
 .info li {
 	font-size: 2.3rem;
-	color: rgb(245, 211, 60);
+	color: #6ac2df;
 	list-style-type: none;
 }
 
 .temperature_img img {
 	width: 125px;
 	height: 125px;
+}
+
+.weather_today.active .info li {
+	font-size: 2.3rem;
+	color: rgb(5, 19, 100);
+	list-style-type: none;
 }
 
 @media (max-width: 1170px) {
@@ -68,7 +98,7 @@
 
 	.info li {
 		font-size: 1.8rem;
-		color: rgb(245, 211, 60);
+		/* color: rgb(245, 211, 60); */
 		list-style-type: none;
 	}
 

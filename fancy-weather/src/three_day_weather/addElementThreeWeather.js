@@ -2,7 +2,6 @@ import { dayName } from '../general/day.js';
 import { getLanguage } from '../general/lng.js';
 
 function addElementThreeWeather(weatherObj) {
-	const weather = document.querySelector('.weather');
 	const weatherThreeDay = document.querySelector('.weather_three_day');
 
 	let result = '';
@@ -27,12 +26,12 @@ function addElementThreeWeather(weatherObj) {
 		dayThree++;
 	});
 
-	result = `<div class="weather_three_day"> ${result} </div>`;
-
-	if (weatherThreeDay) {
-		document.querySelector('.weather_three_day').remove();
+	if (weatherThreeDay.children.length > 0) {
+		Array.from(weatherThreeDay.children).forEach((el) => {
+			el.remove();
+		});
 	}
-	weather.insertAdjacentHTML('afterend', result);
+	weatherThreeDay.insertAdjacentHTML('afterbegin', result);
 }
 
 function getNameDay(params) {

@@ -9,12 +9,33 @@
 .control_block {
 	display: flex;
 	justify-content: space-between;
-
 	margin: 70px 3px 0;
 	background-color: rgb(0, 0, 0, 0.7);
-	box-shadow: 0 0 10px 1px rgb(245, 211, 60);
+	box-shadow: 0 0 10px 1px #CC99FE;
 	border-radius: 8px;
 	padding: 20px;
+	color: black;
+}
+
+.control_block.active {
+	background-color: rgba(224, 224, 224, 0.8);
+	box-shadow: 0 0 10px 1px rgb(0, 0, 0) inset;
+}
+
+.control_block.active button {
+	background-color: rgb(128, 4, 51);
+	color: white;
+}
+
+.control_block.active .language li {
+	border-radius: 8px;
+	background-color: rgb(128, 4, 51);
+	color: white;
+}
+
+.control_block.active button.active {
+	background-color: rgb(175, 95, 126);
+	color: white;
 }
 
 .container_button {
@@ -32,7 +53,15 @@
 	width: 30px;
 	height: 30px;
 	margin: 0 auto;
-	background: url(img/iconfinder__refresh_load_loading_sync_arrow_reload_restart_4213447.png);
+	background: url('img/reload.png');
+	background-size: cover;
+}
+
+.control_block.active .spinner {
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	background: url('img/reloadw.png');
 	background-size: cover;
 }
 
@@ -56,7 +85,7 @@
 
 	border: none;
 	border-radius: 8px;
-	background-color: rgb(245, 211, 60);
+	background-color: rgb(255, 193, 78);
 	font-size: 1.5rem;
 }
 
@@ -77,7 +106,7 @@
 }
 
 .a {
-	background-color: rgb(245, 211, 60);
+	background-color: rgb(255, 193, 78);
 	z-index: 100;
 	border-radius: 8px;
 }
@@ -86,14 +115,14 @@
 	border-top: 1px solid black;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-	background-color: rgb(245, 211, 60);
+	background-color: rgb(255, 193, 78);
 	z-index: 99;
 	top: 45px;
 }
 
 .c.active {
 	border-top: 1px solid black;
-	background-color: rgb(245, 211, 60);
+	background-color: rgb(255, 193, 78);
 	z-index: 98;
 	top: 90px;
 }
@@ -102,7 +131,7 @@
 	border-top: 1px solid black;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
-	background-color: rgb(245, 211, 60);
+	background-color: rgb(255, 193, 78);
 	z-index: 97;
 	top: 135px;
 }
@@ -111,7 +140,7 @@
 .b.active:hover,
 .c.active:hover,
 .d.active:hover {
-	background-color: rgb(184, 160, 53);
+	background-color: rgb(79, 255, 108);
 	color: black;
 }
 
@@ -119,6 +148,66 @@
 	display: flex;
 	margin-left: 10px;
 }
+
+.wrapper_theme {
+	display: flex;
+	margin-left: 10px;
+}
+
+.theme_day_btn {
+	border: none;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+.theme_night_btn {
+	border: none;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.theme_day_btn,
+.theme_night_btn {
+	width: 45px;
+	height: 45px;
+	background-color: rgba(255, 255, 255, 0.5);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.img_icon_day {
+	background-image: url('../img/sun.png');
+}
+
+.img_icon_night {
+	background-image: url('../img/moon.png');
+}
+
+.control_block.active  .img_icon_day {
+	background-image: url('../img/sunw.png');
+}
+
+.control_block.active  .img_icon_night {
+	background-image: url('../img/moonw.png');
+}
+
+.img_icon_day,
+.img_icon_night {
+	width: 25px;
+	height: 25px;
+	margin: 0 auto;
+	background-size: cover;
+}
+
+.theme_day_btn.active,
+.theme_night_btn.active {
+	width: 45px;
+	height: 45px;
+	background-color: rgb(255, 193, 78);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+/*                                          */
 
 .degree_fahrenheit_btn {
 	border: none;
@@ -135,7 +224,7 @@
 .degree_fahrenheit_btn.active,
 .degree_сelsius_btn.active {
 	transition: 0.4s;
-	background-color: rgb(245, 211, 60);
+	background-color: rgb(255, 193, 78);
 	color: black;
 }
 
@@ -143,30 +232,44 @@
 .degree_сelsius_btn {
 	width: 45px;
 	height: 45px;
-	background-color: rgb(245, 211, 60);
+	background-color: rgb(255, 193, 78);
 }
 
 .degree_fahrenheit_btn,
 .degree_сelsius_btn {
 	background-color: rgba(255, 255, 255, 0.5);
-	color: rgb(245, 211, 60);
+	color: rgb(255, 193, 78);
 }
 
 .refresh_img_btn {
-	background-color: rgb(245, 211, 60);
+	background-color: rgb(255, 193, 78);
 	width: 45px;
 	height: 45px;
 }
+
 .refresh_img_btn:hover,
 .degree_fahrenheit_btn:hover,
 .degree_сelsius_btn:hover,
 .search_btn:hover,
-.language:hover {
-	background-color: rgb(245, 211, 60);
-	box-shadow: 0 0 10px 2px rgb(60, 245, 91);
+.language:hover,
+.theme_day_btn:hover,
+.theme_night_btn:hover {
+	background-color: rgb(79, 255, 108);
+	box-shadow: 0 0 5px 3px #f5f5f5;
 	color: black;
-	transition: 0.3s;
+	transition: 0.2s;
 	z-index: 100;
+}
+
+.control_block.active .refresh_img_btn:hover,
+.control_block.active .degree_fahrenheit_btn:hover,
+.control_block.active .degree_сelsius_btn:hover,
+.control_block.active .search_btn:hover,
+.control_block.active .language:hover li:hover,
+.control_block.active .theme_day_btn:hover,
+.control_block.active .theme_night_btn:hover {
+	box-shadow: 0 0 10px 2px rgb(0, 0, 0);
+	background-color: rgb(175, 95, 126);
 }
 
 .form_search {
@@ -179,22 +282,39 @@
 	height: 45px;
 	padding-left: 10px;
 	font-size: 2.5rem;
-	color: rgb(245, 211, 60);
+	color: #CC99FE;
 	border: none;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.3);
 	text-overflow: ellipsis;
 	overflow: hidden;
 	text-shadow: 0px 0px 10px black;
+}
+
+.control_block.active .search_input {
+	color: black;
 }
 
 .search_input::placeholder {
 	color: wheat;
 }
 
+.control_block.active .search_input::placeholder {
+	color: black;
+}
+
+.control_block.active .search_input {
+	background-color: rgba(255, 255, 255, 0.5);
+	text-shadow: 0px 0px 10px rgb(122, 18, 18);
+}
+
 .search_input.active::placeholder {
 	color: red;
+}
+
+.control_block.active .search_input.active::placeholder {
+	color: rgb(218, 7, 7);
 }
 
 .search_btn {
@@ -204,7 +324,7 @@
 	border-top-right-radius: 8px;
 	border-bottom-right-radius: 8px;
 	text-transform: uppercase;
-	background-color: rgb(245, 211, 60);
+	background-color: rgb(255, 193, 78);
 }
 
 @media (max-width: 1170px) {
@@ -236,10 +356,23 @@
 
 @media (max-width: 450px) {
 	.container_button {
-		justify-content: space-between;
+		justify-content: center;
+		flex-wrap: wrap;
 	}
+
+	.container_button  button {
+		margin-bottom: 10px;
+	}
+
+	/* .container_button div:not(.spinner  ) {
+		margin-bottom: 10px;
+	} */
+
 	.search_input {
-		margin: 10px 0 0 0;
+		margin: 0 0 0 0;
 		font-size: 2rem;
+	}
+	.search_btn{
+		margin: 0 0 0 0;
 	}
 }
