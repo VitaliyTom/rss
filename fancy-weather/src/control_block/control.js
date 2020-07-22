@@ -16,7 +16,7 @@ const degreeCelsiusBtn = document.querySelector('.degree_сelsius_btn');
 const degreeFahrenheitBtn = document.querySelector('.degree_fahrenheit_btn');
 const languageLiAll = document.querySelectorAll('.language li');
 const searchInput = document.querySelector('.search_input');
-const theme = document.querySelector('.wrapper_theme');
+const wrapperLanguage = document.querySelector('.wrapper_language');
 
 // -------------------------  theme  -------------------------
 const themeDay = document.querySelector('.theme_day_btn');
@@ -145,6 +145,51 @@ async function getCoordinates(city) {
 }
 
 // -------------------------  Listener  -------------------------
+body.addEventListener('click', (event) => {
+
+	if(!event.target.closest('.wrapper_language')){
+		deleteActiveLi();
+	}
+
+});
+
+//		button select lang
+wrapperLanguage.addEventListener('click', (event) => {
+
+if (event.target.closest('.language')) {
+	languageLiAll.forEach((el) => {
+		el.classList.toggle('active');
+	});
+}
+
+if (event.target.closest('.b') || event.target.closest('.c') || event.target.closest('.d')) {
+	document.querySelector('.a').firstElementChild.innerText = event.target.innerText;
+	localStorage.setItem('lang', event.target.innerText);
+	const coordinates = {
+		lat: localStorage.getItem('lat'),
+		lon: localStorage.getItem('lon')
+	};
+	Promise.all([
+		nameRegion(coordinates),
+		getWeather(),
+		getThreeWeather()
+	]).then(([ region, weatherObj, weatherObjArray ]) => {
+		addElementWeather(weatherObj, region);
+		addElementThreeWeather(weatherObjArray);
+	});
+
+	deleteActiveLi();
+} else if (
+	!event.target.closest('.b') &&
+	!event.target.closest('.c') &&
+	!event.target.closest('.d') &&
+	!event.target.closest('.a')
+) {
+	deleteActiveLi();
+}
+});
+
+// -------------------------  Listener control block -------------------------
 
 controlBlock.addEventListener('click', (event) => {
 	//		replace background
@@ -183,40 +228,7 @@ controlBlock.addEventListener('click', (event) => {
 			addElementWeather(weatherObj, region);
 			addElementThreeWeather(weatherObjArray);
 		});
-	}
-
-	//		button select lang
-	if (event.target.closest('.language')) {
-		languageLiAll.forEach((el) => {
-			el.classList.add('active');
-		});
-	}
-
-	if (event.target.closest('.b') || event.target.closest('.c') || event.target.closest('.d')) {
-		document.querySelector('.a').firstElementChild.innerText = event.target.innerText;
-		localStorage.setItem('lang', event.target.innerText);
-		const coordinates = {
-			lat: localStorage.getItem('lat'),
-			lon: localStorage.getItem('lon')
-		};
-		Promise.all([
-			nameRegion(coordinates),
-			getWeather(),
-			getThreeWeather()
-		]).then(([ region, weatherObj, weatherObjArray ]) => {
-			addElementWeather(weatherObj, region);
-			addElementThreeWeather(weatherObjArray);
-		});
-
-		deleteActiveLi();
-	} else if (
-		!event.target.closest('.b') &&
-		!event.target.closest('.c') &&
-		!event.target.closest('.d') &&
-		!event.target.closest('.a')
-	) {
-		deleteActiveLi();
-	}
+	}	
 
 	if (event.target.closest('.theme_day_btn')) {
 		liteTheme();
