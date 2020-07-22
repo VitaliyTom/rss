@@ -4,8 +4,10 @@ import replaceImg from '../control_block/control.js';
 import getThreeWeather from '../three_day_weather/threeDayWeather.js';
 import addElementWeather from '../weather_today/addElementWeather.js';
 import addElementThreeWeather from '../three_day_weather/addElementThreeWeather.js';
+const spinner = document.querySelector('.spinner');
 
 export function geolocation(coordinates) {
+	spinner.classList.add('active');
 	if (coordinates !== undefined) {
 		allRequest(coordinates);
 	} else {
@@ -53,7 +55,7 @@ export function map(coordinates) {
 	});
 
 	var marker = new mapboxgl.Marker({
-		draggable: true
+		draggable: false
 	})
 		.setLngLat([ coordinates.lon, coordinates.lat ])
 		.addTo(map);
@@ -115,7 +117,7 @@ function allRequest(coordinates) {
 			spinner.classList.remove('active');
 		}
 
-		setTimeout(addElement, 1000, weatherObj, region, weatherObjArray);
+		setTimeout(addElement, 0, weatherObj, region, weatherObjArray);
 	});
 }
 
