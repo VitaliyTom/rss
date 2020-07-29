@@ -10,11 +10,15 @@
 
 .weather_three_day.active {
 	background-color: rgba(224, 224, 224, 0.8);
-	box-shadow: 0 0 10px 1px rgb(0, 0, 0) inset;
+	box-shadow: 0 0 10px 1px rgb(0, 0, 0);
 }
 
 .weather_three_day.active p {
 	color: rgb(112, 4, 45);
+}
+
+.weather_three_day.active .degree_three_day p {
+	color: rgb(5, 19, 100);
 }
 
 .degree_three_day {
