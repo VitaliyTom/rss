@@ -26,6 +26,7 @@ const weatherThreeDay = document.querySelector('.weather_three_day');
 const wrapperMap = document.querySelector('.wrapper_map');
 const body = document.querySelector('body');
 const mapElement = document.getElementById('map');
+const wrapperProgressBar = document.querySelector('.wrapper_progress_bar');
 
 backGroundBar.classList.add('active');
 searchInput.classList.remove('active');
@@ -247,6 +248,8 @@ function liteTheme() {
 	wrapperMap.classList.add('active');
 	body.classList.add('active');
 	mapElement.classList.add('active');
+	wrapperProgressBar.classList.add('white');
+
 }
 
 function darkTheme() {
@@ -259,6 +262,7 @@ function darkTheme() {
 	wrapperMap.classList.remove('active');
 	body.classList.remove('active');
 	mapElement.classList.remove('active');
+	wrapperProgressBar.classList.remove('white');
 }
 
 export default replaceImg;

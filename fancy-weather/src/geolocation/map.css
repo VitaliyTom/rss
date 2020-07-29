@@ -12,7 +12,7 @@
 
 .wrapper_map.active {
 	background-color: rgba(224, 224, 224, 0.8);
-	box-shadow: 0 0 10px 1px rgb(0, 0, 0) inset;
+	box-shadow: 0 0 10px 1px rgb(0, 0, 0);
 }
 
 .wrapper_map.active .coordinates {
