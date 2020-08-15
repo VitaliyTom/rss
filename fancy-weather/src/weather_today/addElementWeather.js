@@ -3,6 +3,7 @@ import { translateCommonWords } from '../general/translateCommonWords.js';
 import { weatherConditions } from '../general/weatherConditions.js';
 import { dayNameAbbreviat } from '../general/day.js';
 import { monthName } from '../general/month.js';
+import { wetherIconSvg } from '../svg/svg.js';
 
 function localDate() {
 	const locDate = document.querySelector('.date');
@@ -33,7 +34,8 @@ function addElementWeather(weatherObj, regionCity) {
 	const searchBtn = document.querySelector('.search_btn');
 	const cityName = document.querySelector('.city_name');
 	const tempValue = document.querySelector('.temp_value');
-	const tempImg = document.querySelector('.temp_img');
+	// const tempImg = document.querySelector('.temp_img');
+	const temperatureImg = document.querySelector('.temperature_img');	
 	const weatherCondition = document.querySelector('.weather_conditions');
 	const weatherFeelslike = document.querySelector('.weather_feelslike');
 	const weatherWind = document.querySelector('.weather_wind');
@@ -56,22 +58,23 @@ function addElementWeather(weatherObj, regionCity) {
 		? Math.round(localStorage.getItem('averageTemp'))
 		: Math.round(weatherObj.temp.value)}°`;
 
-	tempImg.setAttribute(
-		'src',
-		`src/img/${weatherObj.weather_code === null
-			? localStorage.getItem('weatherCode')
-			: weatherObj.weather_code}.svg`
-	);
-	tempImg.setAttribute('alt', `${weatherObj.weather_code}`);
+	if(wetherIconSvg.has(weatherObj.weather_code)){
+		temperatureImg.innerHTML = wetherIconSvg.get(weatherObj.weather_code);
+	}else{
+		temperatureImg.innerHTML = localStorage.getItem('weatherCode');
+	}
+	// temperatureImg.innerHTML = wetherIconSvg.get('snow');
 	weatherCondition.innerText = `${weatherConditions[
 		weatherObj.weather_code === null ? localStorage.getItem('weatherCode') : weatherObj.weather_code
 	][getLanguage()]}`;
+	
 	weatherFeelslike.innerText = `${translateCommonWords.feelslike[getLanguage()]}: ${Math.round(
 		weatherObj.feelslike.value === null ? localStorage.getItem('averageFeelsLike') : weatherObj.feelslike.value
 	)}°`;
 	weatherWind.innerText = `${translateCommonWords.wind[getLanguage()]}: ${Math.round(
 		weatherObj.wind.value === null ? localStorage.getItem('averageWind') : weatherObj.wind.value 
-	)} ${translateCommonWords.windUnits[getLanguage()]}`;
+	)}  ${weatherObj.wind.units === 'mph' ? translateCommonWords.windUnits[1][getLanguage()] : 
+	translateCommonWords.windUnits[0][getLanguage()]}`;
 	weather_humidity.innerText = `${translateCommonWords.humidity[getLanguage()]}: ${Math.round(
 		weatherObj.humidity.value === null ? localStorage.getItem('averageHumidity') : weatherObj.humidity.value
 	)}%`;

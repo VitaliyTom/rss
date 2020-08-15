@@ -1,5 +1,6 @@
 import { dayName } from '../general/day.js';
 import { getLanguage } from '../general/lng.js';
+import { wetherIconSvg } from '../svg/svg.js';
 
 function addElementThreeWeather(weatherObj) {
 	const weatherThreeDay = document.querySelector('.weather_three_day');
@@ -19,7 +20,8 @@ function addElementThreeWeather(weatherObj) {
                     <p>${Math.round(el.temp[1].max.value)}°</p>
                 </div>
                 <div class="img_three_day">
-                    <img src="src/img/${el.weather_code}.svg" alt="${el.weather_code}">
+					${wetherIconSvg.has(el.weather_code) ? wetherIconSvg.get(el.weather_code) : el.weather_code}
+					
                 </div>
             </div>
         </div>`;
