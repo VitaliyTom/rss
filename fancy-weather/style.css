@@ -3,6 +3,7 @@
 @import "src/weather_today/weatherToDay.css";
 @import "src/three_day_weather/threeDayWeather.css";
 @import "src/geolocation/map.css";
+@import "src/animationSvg.css";
 
 * {
     box-sizing: border-box;
@@ -159,7 +160,7 @@ body.active:after {
     margin-top: 40px;
 }
 
-@media (max-width: 1170px) {
+@media (max-width: 1230px) {
     .container_content {
         margin-top: 20px;
     }
