@@ -1,0 +1,150 @@
+.sun{
+	animation: sunAnimation 5s linear infinite;
+}
+
+@keyframes sunAnimation {
+	0% {
+		transform-origin:center;
+		transform: rotate(0);
+	}
+	100% {
+		transform-origin:center;
+		transform: rotate(360deg);
+	}
+}
+
+.mostly{
+	animation: mostlyAnimation 5s linear infinite;
+}
+
+@keyframes mostlyAnimation {
+	0% {
+		transform: translate(0, 0);
+	}
+	25% {
+		transform: translate(-7%, 0);
+	}
+	50% {
+		transform: translate(0, 0);
+	}
+	75% {
+		transform: translate(7%, 0);
+	}  
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+.partly{
+	animation: partlyAnimation 8s ease-in infinite;
+}
+
+@keyframes partlyAnimation {
+	0% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(50%, 0);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+.drizzle path {
+    animation: drizzleAnimation 1s ease-in infinite;
+}
+
+.drizzle :nth-child(1){
+	-webkit-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+}
+
+.drizzle :nth-child(2){
+	-webkit-animation-delay: 1s;
+	animation-delay: 0.7s;
+}
+
+.drizzle :nth-child(3){
+	-webkit-animation-delay: 1.25s;
+	animation-delay: 1.25s;
+}
+
+@keyframes drizzleAnimation {
+    0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(-10%, 50%);
+	}
+}
+
+.rain path {
+    animation: rainAnimation 1s ease-in infinite;
+}
+
+.rain line {
+    animation: rainAnimation 1s ease-in infinite;
+}
+
+.rain :nth-child(1){
+	-webkit-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+}
+
+.rain :nth-child(2){
+	-webkit-animation-delay: 0.7s;
+	animation-delay: 0.7s;
+}
+
+.rain :nth-child(3){
+	-webkit-animation-delay: 0.9s;
+	animation-delay: 0.9s;
+}
+
+.rain :nth-child(4){
+	-webkit-animation-delay: 1.25s;
+	animation-delay: 1.25s;
+}
+
+.rain :nth-child(5){
+	-webkit-animation-delay: 1.45s;
+	animation-delay: 1.45s;
+}
+
+@keyframes rainAnimation {
+    0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(0, 50%);
+	}
+}
+
+.snow g {
+    animation: snowAnimation 1.2s ease-in infinite;
+}
+
+.snow :nth-child(1){
+	-webkit-animation-delay: 0.7s;
+	animation-delay: 0.7s;
+}
+
+.snow :nth-child(2){
+	-webkit-animation-delay: 0.3s;
+	animation-delay: 0.3s;
+}
+
+.snow :nth-child(3){
+	-webkit-animation-delay: 0.9s;
+	animation-delay: 0.9s;
+}
+
+@keyframes snowAnimation {
+    0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(0, 50%);
+	}
+}
