@@ -327,7 +327,7 @@
 	background-color: rgb(255, 193, 78);
 }
 
-@media (max-width: 1170px) {
+@media (max-width: 1230px) {
 	.control_block {
 		margin: 40px 25px 0;
 	}
@@ -363,10 +363,6 @@
 	.container_button  button {
 		margin-bottom: 10px;
 	}
-
-	/* .container_button div:not(.spinner  ) {
-		margin-bottom: 10px;
-	} */
 
 	.search_input {
 		margin: 0 0 0 0;
