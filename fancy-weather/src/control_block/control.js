@@ -49,7 +49,7 @@ if (localStorage.getItem('theme') === 'lite') {
 if (!localStorage.hasOwnProperty('lang')) {
 	localStorage.setItem('lang', 'Eng');
 } else {
-	document.querySelector('.a').firstElementChild.innerText = localStorage.getItem('lang');
+	document.querySelector('.lang_0').firstElementChild.innerText = localStorage.getItem('lang');
 }
 
 if (!localStorage.hasOwnProperty('degree')) {
@@ -167,8 +167,8 @@ if (event.target.closest('.language')) {
 	});
 }
 
-if (event.target.closest('.b') || event.target.closest('.c') || event.target.closest('.d')) {
-	document.querySelector('.a').firstElementChild.innerText = event.target.innerText;
+if (event.target.closest('.lang_1') || event.target.closest('.lang_2') || event.target.closest('.lang_3') || event.target.closest('.lang_4')) {
+	document.querySelector('.lang_0').firstElementChild.innerText = event.target.innerText;
 	localStorage.setItem('lang', event.target.innerText);
 	const coordinates = {
 		lat: localStorage.getItem('lat'),
@@ -187,10 +187,11 @@ if (event.target.closest('.b') || event.target.closest('.c') || event.target.clo
 	delete_burger_open();
 	
 } else if (
-	!event.target.closest('.b') &&
-	!event.target.closest('.c') &&
-	!event.target.closest('.d') &&
-	!event.target.closest('.a')
+	!event.target.closest('.lang_1') &&
+	!event.target.closest('.lang_2') &&
+	!event.target.closest('.lang_3') &&
+	!event.target.closest('.lang_4') &&
+	!event.target.closest('.lang_0')
 ) {
 	deleteActiveLi();
 	delete_burger_open();
