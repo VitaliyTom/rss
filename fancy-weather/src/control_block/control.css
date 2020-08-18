@@ -28,12 +28,6 @@
 	color: white;
 }
 
-.control_block.active .language li {
-	border-radius: 8px;
-	background-color: rgb(128, 4, 51);
-	color: white;
-}
-
 .control_block.active button.active {
 	background-color: rgb(175, 95, 126);
 	color: white;
@@ -139,7 +133,6 @@
 	position: relative;
 	width: 55px;
 	height: 45px;
-
 	border: none;
 	border-radius: 8px;
 	background-color: rgb(255, 193, 78);
@@ -153,7 +146,28 @@
 	list-style-type: none;
 	width: 55px;
 	height: 45px;
-	transition: 0.5s;
+	transition: 0.2s;
+}
+
+.control_block.active .language {
+	position: relative;
+	width: 55px;
+	height: 45px;
+	border: none;
+	border-radius: 8px;
+	background-color: rgb(128, 4, 51);
+	font-size: 1.5rem;
+	color: white;
+}
+
+.control_block.active .language li {
+	position: absolute;
+	top: 0;
+	left: 0;
+	list-style-type: none;
+	width: 55px;
+	height: 45px;
+	transition: 0.2s;
 }
 
 .lang {
@@ -162,13 +176,13 @@
 	text-align: center;
 }
 
-.a {
+.lan.lang_0 {
 	background-color: rgb(255, 193, 78);
 	z-index: 100;
 	border-radius: 8px;
 }
 
-.b.active {
+.lan.lang_1.active {
 	border-top: 1px solid black;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
@@ -177,26 +191,73 @@
 	top: 45px;
 }
 
-.c.active {
+.lan.lang_2.active {
 	border-top: 1px solid black;
 	background-color: rgb(255, 193, 78);
 	z-index: 98;
 	top: 90px;
 }
 
-.d.active {
+.lan.lang_3.active {
 	border-top: 1px solid black;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
 	background-color: rgb(255, 193, 78);
 	z-index: 97;
 	top: 135px;
 }
 
-.a:hover,
-.b.active:hover,
-.c.active:hover,
-.d.active:hover {
+.lan.lang_4.active {
+	border-top: 1px solid black;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	background-color: rgb(255, 193, 78);
+	z-index: 97;
+	top: 180px;
+}
+
+.control_block.active .lan.lang_0 {
+	background-color: rgb(128, 4, 51);
+	z-index: 100;
+	border-radius: 8px;
+}
+
+.control_block.active .lan.lang_1.active {
+	border-top: 1px solid black;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	background-color: rgb(128, 4, 51);
+	z-index: 99;
+	top: 45px;
+}
+
+.control_block.active .lan.lang_2.active {
+	border-top: 1px solid black;
+	background-color: rgb(128, 4, 51);
+	z-index: 98;
+	top: 90px;
+}
+
+.control_block.active .lan.lang_3.active {
+	border-top: 1px solid black;
+	background-color: rgb(128, 4, 51);
+	z-index: 97;
+	top: 135px;
+}
+
+.control_block.active .lan.lang_4.active {
+	border-top: 1px solid black;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	background-color: rgb(128, 4, 51);
+	z-index: 97;
+	top: 180px;
+}
+
+
+.lan.a:hover,
+.lan.b.active:hover,
+.lan.c.active:hover,
+.lan.d.active:hover,
+.lan.e.active:hover {
 	background-color: rgb(79, 255, 108);
 	color: black;
 }
