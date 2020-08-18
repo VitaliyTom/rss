@@ -4,4 +4,4 @@ async function codeCountry() {
 	localStorage.setItem('country_code', parsed.country);
 }
 
-codeCountry();
+// codeCountry();
