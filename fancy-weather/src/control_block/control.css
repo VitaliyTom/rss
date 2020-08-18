@@ -253,11 +253,11 @@
 }
 
 
-.lan.a:hover,
-.lan.b.active:hover,
-.lan.c.active:hover,
-.lan.d.active:hover,
-.lan.e.active:hover {
+.lan.lang_0:hover,
+.lan.lang_1.active:hover,
+.lan.lang_2.active:hover,
+.lan.lang_3.active:hover,
+.lan.lang_4.active:hover {
 	background-color: rgb(79, 255, 108);
 	color: black;
 }
