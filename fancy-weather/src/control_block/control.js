@@ -7,9 +7,10 @@ import getThreeWeather from '../three_day_weather/threeDayWeather.js';
 import addElementWeather from '../weather_today/addElementWeather.js';
 import addElementThreeWeather from '../three_day_weather/addElementThreeWeather.js';
 
-const controlBlock = document.querySelector('.control_block');
+
 // const client_id = 'YcOZjTnZyaoo2rVD0K3ZYSlVYGwpyJxwhqZMzc-R5to';
 const client_id = 'e2077ad31a806c894c460aec8f81bc2af4d09c4f8104ae3177bb809faf0eac17';
+const controlBlock = document.querySelector('.control_block');
 const backGroundBar = document.querySelector('.wrapper_progress_bar');
 const spinner = document.querySelector('.spinner');
 const degreeCelsiusBtn = document.querySelector('.degree_сelsius_btn');
@@ -27,6 +28,9 @@ const wrapperMap = document.querySelector('.wrapper_map');
 const body = document.querySelector('body');
 const mapElement = document.getElementById('map');
 const wrapperProgressBar = document.querySelector('.wrapper_progress_bar');
+const containerButton = document.querySelector('.container_button');
+const burgerSwitch = document.querySelector('.burger_switch');
+const containerSearch = document.querySelector('.container_search');
 
 backGroundBar.classList.add('active');
 searchInput.classList.remove('active');
@@ -180,6 +184,8 @@ if (event.target.closest('.b') || event.target.closest('.c') || event.target.clo
 	});
 
 	deleteActiveLi();
+	delete_burger_open();
+	
 } else if (
 	!event.target.closest('.b') &&
 	!event.target.closest('.c') &&
@@ -187,14 +193,18 @@ if (event.target.closest('.b') || event.target.closest('.c') || event.target.clo
 	!event.target.closest('.a')
 ) {
 	deleteActiveLi();
+	delete_burger_open();
+
 }
 });
 
 // -------------------------  Listener control block -------------------------
 
 controlBlock.addEventListener('click', (event) => {
+
 	//		replace background
 	if (event.target.closest('.wrapper_refresh_img')) {
+		delete_burger_open();
 		spinner.classList.add('active');
 		const coordinates = {
 			lat: localStorage.getItem('lat'),
@@ -203,6 +213,7 @@ controlBlock.addEventListener('click', (event) => {
 
 		geolocation(coordinates);
 	}
+
 	//		search button
 	if (event.target.closest('.search_btn')) {
 		const searchInput = document.querySelector('.search_input');
@@ -236,7 +247,27 @@ controlBlock.addEventListener('click', (event) => {
 	} else if (event.target.closest('.theme_night_btn')) {
 		darkTheme();
 	}
+
+	if(event.target.closest('.burger_switch') || event.target === controlBlock){	
+		containerButton.classList.toggle('open');
+		controlBlock.classList.toggle('open');
+		burgerSwitch.classList.toggle('open');
+		containerSearch.classList.toggle('open');
+		body.classList.toggle('open');		
+	};
 });
+
+//		delete burger open
+
+function delete_burger_open(){
+
+containerButton.classList.remove('open');
+controlBlock.classList.remove('open');
+burgerSwitch.classList.remove('open');
+containerSearch.classList.remove('open');
+body.classList.remove('open');
+
+}
 
 function liteTheme() {
 	localStorage.setItem('theme', 'lite');

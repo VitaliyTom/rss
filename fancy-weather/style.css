@@ -27,16 +27,18 @@ body {
     color: ghostwhite;
 }
 
+body.open { overflow-y: hidden; }
+
 body:after {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    min-width: 100%;
     min-height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background: rgb(0, 0, 0, 0.5);
+    background: rgb(0, 0, 0, 0.4);
     z-index: -3;
 }
 
@@ -49,7 +51,7 @@ body.active:after {
     min-height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background: rgba(233, 233, 233, 0.2);
+    background: rgb(0, 0, 0, 0.2);
     z-index: -3;
 }
 

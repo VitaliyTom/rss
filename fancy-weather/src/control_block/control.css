@@ -7,6 +7,7 @@
 }
 
 .control_block {
+	/* position: relative; */
 	display: flex;
 	justify-content: space-between;
 	margin: 70px 3px 0;
@@ -36,6 +37,62 @@
 .control_block.active button.active {
 	background-color: rgb(175, 95, 126);
 	color: white;
+}
+
+	/* burger */
+
+.burger_switch{
+	position: absolute;
+	top: 65px;
+	left: 45px;
+	display: none;
+	width: 40px;
+	height: 40px;
+	border-radius: 10px ;
+}
+
+.burger{	
+	top: 50%;
+	left: 0;
+}
+
+.burger::before{
+	content: '';	
+	top: -12px;
+	left: 0;	
+}
+
+.burger::after{
+	content: '';	
+	top: 12px;
+	left: 0;
+}
+
+.burger_switch:hover{
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.burger,
+.burger::before,
+.burger::after{
+	position: absolute;
+	width: 40px;
+	height: 3px;
+	border-radius: 3px;
+	background-color: rgb(255, 193, 78);	
+	transition: 0.4s;
+}
+
+.control_block.active .burger,
+.control_block.active .burger::before,
+.control_block.active .burger::after{	
+	background-color: rgb(128, 4, 51);
+}
+
+.burger_switch.open .burger{
+	transform: translate(0,-50%) rotate(90deg);
+	transition: 0.4s;
 }
 
 .container_button {
@@ -207,7 +264,6 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 }
-/*                                          */
 
 .degree_fahrenheit_btn {
 	border: none;
@@ -238,7 +294,6 @@
 .degree_fahrenheit_btn,
 .degree_сelsius_btn {
 	background-color: rgba(255, 255, 255, 0.5);
-	color: rgb(255, 193, 78);
 }
 
 .refresh_img_btn {
@@ -256,8 +311,8 @@
 .theme_night_btn:hover {
 	background-color: rgb(79, 255, 108);
 	box-shadow: 0 0 5px 3px #f5f5f5;
-	color: black;
 	transition: 0.2s;
+	cursor: pointer;
 	z-index: 100;
 }
 
@@ -338,37 +393,112 @@
 	}
 }
 
+@media (max-width: 850px) {
+
+	.control_block{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.container_button{
+		margin: 0 auto;
+		margin-bottom: 10px;
+	}
+	
+}
+
 @media (max-width: 650px) {
 	.control_block {
 		flex-wrap: wrap;
 		justify-content: center;
 		margin: 40px 25px 0;
-	}
+	}	
 
 	.search_input {
-		margin-top: 10px;
+		margin-top: 0;
 	}
 
 	.search_btn {
-		margin-top: 10px;
+		margin-top: 0;
 	}
 }
 
 @media (max-width: 450px) {
-	.container_button {
-		justify-content: center;
-		flex-wrap: wrap;
+
+	.control_block.active.open,
+	.control_block.open {
+			position: fixed;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin: 0;
+			min-width: 100vw;
+			min-height: 100vh;
+			left: 0;
+			top: 0;
+			border-radius: 0;
+			z-index: 1000;
 	}
 
-	.container_button  button {
-		margin-bottom: 10px;
+	.control_block.active.open{
+		background-color: rgba(224, 224, 224, 0.9);
 	}
+
+	.control_block.open{
+		background-color: rgba(0, 0, 0, 0.9);
+	}	
+	
+	.container_search{
+		width: 80%;
+		margin-left: 60px;
+	}
+
+	.container_search.open{
+		display: none;
+	}
+
+	.burger_switch{
+		display: flex;
+		top: 60px;
+		left: 45px;
+	}
+
+	.burger_switch.open{
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		display: flex;
+	}
+	
+	.container_button{
+		position: absolute;
+		top: 0;
+		left: -150%;
+		transition: 0.4s;
+	}
+
+	.container_button.open{
+		position: absolute;
+		top: 20%;
+		left: 50%;
+		transform: translate(-50%, 0);	
+		transition: 0.4s;
+	}	
+
+    .form_search{
+		width: 100%;
+		padding: 0 1px;
+    }
 
 	.search_input {
-		margin: 0 0 0 0;
-		font-size: 2rem;
+		width: 100%;
+		margin: 0;
+		font-size: 1.4rem;
 	}
+
 	.search_btn{
-		margin: 0 0 0 0;
-	}
+		font-size: 1rem;
+		width: 30%;
+		margin: 0;
+	} 
+
 }
