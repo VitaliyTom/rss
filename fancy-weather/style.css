@@ -3,7 +3,7 @@
 @import "src/weather_today/weatherToDay.css";
 @import "src/three_day_weather/threeDayWeather.css";
 @import "src/geolocation/map.css";
-@import "src/animationSvg.css";
+@import "src/svg/animationSvg.css";
 
 * {
     box-sizing: border-box;
@@ -67,21 +67,21 @@ body.active:after {
     left: 45%;
     top: 25%;
     background-color: rgb(0, 0, 0, 0.8);
-    box-shadow: 0px 0px 25px 10px rgb(250, 187, 71)inset;	
+    box-shadow: 0px 0px 20px 15px #CC99FE inset;	
     border-radius: 50%;
     z-index: 199;
     animation: back_ground_bar 2s infinite linear;
 }
 
-.wrapper_progress_bar.active.white{
+.wrapper_progress_bar.white.active{
     position: absolute;
     display: inline-block;
     width: 120px;
     height: 120px;
     left: 45%;
     top: 25%;
-    background-color: rgba(0, 0, 0, 0.24);
-    box-shadow: 0px 0px 25px 10px rgba(5, 19, 100, 0.377) inset;	
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 20px 15px rgb(5, 19, 100) inset;	
     border-radius: 50%;
     z-index: 199;
     animation: back_ground_bar 2s infinite linear;
@@ -92,7 +92,7 @@ body.active:after {
     width: 25px;
     height: 25px;
     border-radius: 25%;
-    box-shadow: 0px 0px 15px 7px #6ac2df ;	
+    box-shadow: 0px 0px 10px 5px #6ac2df inset;	
     animation: rotate-div 3s infinite ease-in-out;
 }
 
@@ -101,16 +101,20 @@ body.active:after {
     width: 25px;
     height: 25px;
     border-radius: 25%;
-    box-shadow: 0px 0px 15px 10px rgb(170, 32, 85) ;	
+    box-shadow: 0px 0px 10px 5px rgb(226, 41, 112) inset;	
     animation: rotate-div 3s infinite ease-in-out;
 }
 
 @keyframes rotate-div {
     0% {
-        transform: rotate(0deg);
+        transform: rotate(0deg) ;
       }
+      50% {
+        transform: rotate(-360deg) scale(0.2);
+      }
+
     100% {
-        transform: rotate(360deg);
+        transform: rotate(-360deg) ;
       }
 }
 
@@ -182,13 +186,13 @@ body.active:after {
 }
 
 @media (max-width: 650px) {
-    .wrapper_progress_bar.active {
+    .wrapper_progress_bar.active,
+    .wrapper_progress_bar.white.active {
         position: absolute;
         display: inline-block;
         width: 120px;
         height: 120px;
         left: 35%;
-        top: 25%;
-    
+        top: 45%;    
     }
 }

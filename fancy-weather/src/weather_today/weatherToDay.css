@@ -129,6 +129,7 @@
 	.weather_description li {
 		display: flex;
 		justify-content: center;
+		text-align: center;
 		font-size: 1.8rem;
 	}
 

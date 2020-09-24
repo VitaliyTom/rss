@@ -1,7 +1,7 @@
 export const translateCommonWords = {
 	search: [ 'Search city or ZIP', 'Поиск города или индекс', 'Пошук горада ці індэкс', 'Wyszukaj miasto lub kod pocztowy' ],
 	searchBtn: [ 'Search', 'Поиск', 'Пошук', 'Szukaj' ],
-	feelslike: [ 'feelslike', 'ощущается', 'адчуваецца', 'czuje się jak' ],
+	feelslike: [ 'feelslike', 'ощущается', 'адчуваецца', 'odczuwalna temperatura' ],
 	wind: [ 'wind', 'ветер', 'вецер', 'wiatr' ],
 	humidity: [ 'humidity', 'влажность', 'вільготнасць', 'wilgotność' ],
 	windUnits: [ ['m/s', 'м/с', 'м/с', 'm/s'], ['mph', 'миль/ч', 'міль/г', 'mph'] ],
